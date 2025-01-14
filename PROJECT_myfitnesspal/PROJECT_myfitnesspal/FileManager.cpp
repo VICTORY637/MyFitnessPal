@@ -1,5 +1,5 @@
 #include "FileManager.h"
-#include "User.h"
+#include "User.logging.h"
 #include <fstream>
 #include <iostream>
 
@@ -25,12 +25,17 @@ void saveUsersToFile() {
             << user.weight << " "
             << user.activity << " "
             << user.goal << " "
-            << user.accountType << "\n";
+            << user.accountType << " "
+            << user.dailyCalories << " "
+            << user.protein << " "
+            << user.fat << " "
+            << user.carbs << "\n";
     }
 
-    std::cout << "User data saved successfully.\n"; // Debug message
+    std::cout << "User data saved successfully.\n";
     outFile.close();
 }
+
 
 void loadUsersFromFile() {
     std::ifstream inFile(userDatabaseFile);
@@ -40,7 +45,7 @@ void loadUsersFromFile() {
     }
 
     User user;
-    while (inFile >> user.username >> user.password >> user.age >> user.gender >> user.height >> user.weight >> user.activity >> user.goal >> user.accountType) {
+    while (inFile >> user.username >> user.password >> user.age >> user.gender >> user.height >> user.weight >> user.activity >> user.goal >> user.accountType >> user.dailyCalories >> user.protein >> user.fat >> user.carbs) {
         userDatabase.push_back(user);
         std::cout << "Loaded user: " << user.username << "\n";
     }
