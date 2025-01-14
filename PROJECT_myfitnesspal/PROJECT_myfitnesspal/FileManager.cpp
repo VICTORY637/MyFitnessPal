@@ -3,6 +3,10 @@
 #include <fstream>
 #include <iostream>
 
+//here are functions:
+// saveDatabaseFile()
+//loadUsersFromFile()
+
 const std::string userDatabaseFile = "users.txt";
 
 void saveUsersToFile() {
@@ -19,6 +23,7 @@ void saveUsersToFile() {
             << user.gender << " "
             << user.height << " "
             << user.weight << " "
+            << user.activity << " "
             << user.goal << " "
             << user.accountType << "\n";
     }
@@ -35,7 +40,7 @@ void loadUsersFromFile() {
     }
 
     User user;
-    while (inFile >> user.username >> user.password >> user.age >> user.gender >> user.height >> user.weight >> user.goal >> user.accountType) {
+    while (inFile >> user.username >> user.password >> user.age >> user.gender >> user.height >> user.weight >> user.activity >> user.goal >> user.accountType) {
         userDatabase.push_back(user);
         std::cout << "Loaded user: " << user.username << "\n";
     }

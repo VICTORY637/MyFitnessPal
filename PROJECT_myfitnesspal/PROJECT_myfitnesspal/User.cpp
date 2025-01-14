@@ -5,6 +5,11 @@
 #include <fstream>
 #include <ctime>
 
+//functions here:
+// displayMainMenu()
+// logIn()
+//displayMotivationalQuote()
+//signIn()
 
 std::vector<User> userDatabase;
 
@@ -58,14 +63,18 @@ void logIn() {
         if (user.username == username && user.password == password) {
             userFound = true;
             std::cout << "Welcome, " << username << "!\n";
-            std::cout << "Your profile: \n";
             if (user.accountType == 'S') std::cout << "STANDARD account" << "\n";
             else std::cout << "PREMIUM account" << "\n";
+            std::cout << "Your info: \n";
             std::cout << "Age: " << user.age << "\n";
-            std::cout << "Gender: " << user.gender << "\n";
+            if (user.gender == 'M') std::cout << "Gender: male" << "\n";
+            else std::cout << "Gender: female" << "\n";
             std::cout << "Height: " << user.height << "\n";
             std::cout << "Weight: " << user.weight << "\n";
-            std::cout << "Goal: " << user.goal << "\n";
+            std::cout << "Daily activity index: " << user.activity << '\n';
+            if (user.goal == "L") std::cout << "Goal: lose" << "\n";
+            else if (user.goal == "M") std::cout << "Goal: maintain" << "\n";
+            else std::cout << "Goal: gain" << "\n";
             break;
         }
     }
@@ -178,6 +187,19 @@ void signIn() {
         }
     } while (true);
 
+    // Daily activity
+    do {
+        std::cout << "Rate your daily activity from 1 to 5: ";
+        if (!(std::cin >> newUser.activity) || newUser.activity < 1 || newUser.activity > 5) {
+            std::cout << "Invalid activity index. Please enter a number between 1 and 5.\n";
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+        }
+        else {
+            break;
+        }
+    } while (true);
+
     // Aim
     do {
         std::cout << "Enter goal (\"L\" for LOSE / \"M\" for MAINTAIN / \"G\" for GAIN): ";
@@ -188,12 +210,15 @@ void signIn() {
 
         if (newUser.goal != "L" && newUser.goal != "M" && newUser.goal != "G") {
             std::cout << "Invalid goal. Please enter L, M or G.\n";
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
         }
         else {
             break;
         }
     } while (true);
 
+    // Account type
     std::string accountType;
     do {
         std::cout << "Enter account type (S for Standard / P for Premium): ";
@@ -203,6 +228,8 @@ void signIn() {
 
         if (newUser.accountType != 'S' && newUser.accountType != 'P') {
             std::cout << "Invalid account type. Please enter 'S' or 'P'.\n";
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
         }
         else {
             break;

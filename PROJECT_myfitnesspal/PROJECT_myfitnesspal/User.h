@@ -12,6 +12,7 @@ struct User {
     char gender = 'U'; // U = Undefined
     double height = 0.0;
     double weight = 0.0;
+    int activity = 0;
     std::string goal = "";
     char accountType = 'S'; // Default value
 };
