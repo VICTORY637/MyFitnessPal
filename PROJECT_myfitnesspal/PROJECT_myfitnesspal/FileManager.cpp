@@ -19,10 +19,11 @@ void saveUsersToFile() {
             << user.gender << " "
             << user.height << " "
             << user.weight << " "
-            << user.goal << "\n";
+            << user.goal << " "
+            << user.accountType << "\n";
     }
 
-    std::cout << "User data saved successfully.\n";
+    std::cout << "User data saved successfully.\n"; // Debug message
     outFile.close();
 }
 
@@ -34,8 +35,9 @@ void loadUsersFromFile() {
     }
 
     User user;
-    while (inFile >> user.username >> user.password >> user.age >> user.gender >> user.height >> user.weight >> user.goal) {
+    while (inFile >> user.username >> user.password >> user.age >> user.gender >> user.height >> user.weight >> user.goal >> user.accountType) {
         userDatabase.push_back(user);
+        std::cout << "Loaded user: " << user.username << "\n";
     }
 
     if (userDatabase.empty()) {

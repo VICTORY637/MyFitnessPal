@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <ctime>
+
 
 std::vector<User> userDatabase;
 
@@ -49,11 +51,16 @@ void logIn() {
     std::cin >> password;
 
     bool userFound = false;
+
+    displayMotivationalQuote();
+
     for (const auto& user : userDatabase) {
         if (user.username == username && user.password == password) {
             userFound = true;
             std::cout << "Welcome, " << username << "!\n";
             std::cout << "Your profile: \n";
+            if (user.accountType == 'S') std::cout << "STANDARD account" << "\n";
+            else std::cout << "PREMIUM account" << "\n";
             std::cout << "Age: " << user.age << "\n";
             std::cout << "Gender: " << user.gender << "\n";
             std::cout << "Height: " << user.height << "\n";
@@ -67,6 +74,40 @@ void logIn() {
         std::cout << "Invalid username or password.\n";
     }
 }
+
+
+
+
+void displayMotivationalQuote() {
+    const char* quotes[] = {
+        "Believe in yourself and all that you are.",
+        "The secret of getting ahead is getting started.",
+        "Every journey begins with a single step.",
+        "You don’t have to be great to start, but you have to start to be great.",
+        "Push yourself, because no one else is going to do it for you.",
+        "Success is not the key to happiness. Happiness is the key to success.",
+        "Hardships often prepare ordinary people for an extraordinary destiny.",
+        "Don’t watch the clock; do what it does. Keep going.",
+        "Action is the foundational key to all success.",
+        "You are never too old to set another goal or to dream a new dream.",
+        "Don’t limit your challenges. Challenge your limits.",
+        "The future depends on what you do today.",
+        "The only way to do great work is to love what you do.",
+        "Dream big and dare to fail.",
+        "What we achieve inwardly will change outer reality."
+    };
+
+    int quoteCount = sizeof(quotes) / sizeof(quotes[0]);
+    int randomIndex = std::time(nullptr) % quoteCount;
+
+    std::cout << "\nMotivational Quote of the day: " << quotes[randomIndex] << "\n\n";
+}
+
+
+
+
+
+
 
 void signIn() {
     User newUser;
@@ -152,6 +193,22 @@ void signIn() {
             break;
         }
     } while (true);
+
+    std::string accountType;
+    do {
+        std::cout << "Enter account type (S for Standard / P for Premium): ";
+        std::cin >> newUser.accountType;
+        if (newUser.accountType == 's') newUser.accountType = 'S';
+        if (newUser.accountType == 'p') newUser.accountType = 'P';
+
+        if (newUser.accountType != 'S' && newUser.accountType != 'P') {
+            std::cout << "Invalid account type. Please enter 'S' or 'P'.\n";
+        }
+        else {
+            break;
+        }
+    } while (true);
+
 
     userDatabase.push_back(newUser);
     std::cout << "Account created successfully!\n";
