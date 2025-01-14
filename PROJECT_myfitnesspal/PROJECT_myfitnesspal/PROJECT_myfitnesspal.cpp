@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <limits>
 #include <ctime>
 
 struct User {
@@ -46,10 +45,11 @@ void displayMainMenu() {
 
         if (!(std::cin >> choice)) {
             std::cin.clear(); // Clear the error flag
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
+            std::cin.ignore(10000, '\n'); // Ignore invalid input
             std::cout << "Invalid input. Please enter a number between 1 and 3.\n";
             continue;
         }
+
 
         switch (choice) {
         case 1:
@@ -133,13 +133,12 @@ void signIn() {
         }
 
         if (newUser.gender != 'M' && newUser.gender != 'F') {
-            std::cout << "Invalid gender. Please enter M or F.\n";
+            std::cout << "Invalid gender. Please enter M or F.";
         }
         else {
             break;
         }
     } while (true);
-
 
     do {
         std::cout << "Enter height (cm): ";
@@ -227,5 +226,4 @@ void loadUsersFromFile() {
 
     inFile.close();
 }
-
 
