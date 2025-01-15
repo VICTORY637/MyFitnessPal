@@ -6,12 +6,12 @@
 #include <iostream>
 
 
-void editUserProfile(User& user) {
+void editPhisicalCharacteristics(User& user) {
     int choice;
     bool done = false;
 
     while (!done) {
-        std::cout << "\nEdit Profile:\n";
+        std::cout << "\nEdit Phisical Characteristics:\n";
         std::cout << "1. Edit Age\n";
         std::cout << "2. Edit Weight\n";
         std::cout << "3. Edit Goal\n";
@@ -70,16 +70,14 @@ void editUserProfile(User& user) {
 
 
 
-
-void displayMyAccountMenu(User& user) {
+void editUserInformation(User& user) {
     int choice;
-    bool goBack = false;
+    bool done = false;
 
-
-    while (!goBack) {
-        std::cout << "\nMy Account:\n";
-        std::cout << "1. Edit physical characteristics\n";
-        std::cout << "2. Edit user information\n";
+    while (!done) {
+        std::cout << "\nEdit User Information:\n";
+        std::cout << "1. Change Username\n";
+        std::cout << "2. Change Password\n";
         std::cout << "3. Back\n";
         std::cout << "Choose an option: ";
 
@@ -91,17 +89,94 @@ void displayMyAccountMenu(User& user) {
         }
 
         switch (choice) {
+        case 1: {
+            std::string newUsername;
+            std::cout << "Enter new username: ";
+            std::cin >> newUsername;
+
+            bool usernameExists = false;
+            for (const auto& existingUser : userDatabase) {
+                if (existingUser.username == newUsername) {
+                    usernameExists = true;
+                    break;
+                }
+            }
+
+            if (usernameExists) {
+                std::cout << "Username already exists. Please try a different one.\n";
+            }
+            else {
+                user.username = newUsername;
+                std::cout << "Username updated successfully.\n";
+            }
+            break;
+        }
+        case 2: {
+            std::string currentPassword, newPassword;
+
+            std::cout << "Enter your current password: ";
+            std::cin >> currentPassword;
+
+            if (currentPassword != user.password) {
+                std::cout << "Incorrect password. Try again.\n";
+                break;
+            }
+
+            std::cout << "Enter new password: ";
+            std::cin >> newPassword;
+
+            user.password = newPassword;
+            std::cout << "Password updated successfully.\n";
+            break;
+        }
+        case 3:
+            std::cout << "Returning to the previous menu.\n";
+            done = true;
+            break;
+        default:
+            std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+        }
+    }
+}
+
+
+
+
+
+
+
+void displayMyAccountMenu(User& user) {
+    int choice;
+
+    std::cout << "\nMy Account:\n";
+    printUserInformation(user);
+
+    bool back = true;
+    while (back) {
+        std::cout << "1. Edit physical characteristics\n";
+        std::cout << "2. Edit user information\n";
+        std::cout << "3. Back\n";
+        std::cout << "Choose an option: ";
+
+        while (true) {
+            if (!(std::cin >> choice)) {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+                std::cout << "Invalid input. Please enter a number between 1 and 3.\n";
+            }
+            else break;
+        }
+
+        switch (choice) {
         case 1:
-            editUserProfile(user);
-            goBack = true;
-            break;
+            editPhisicalCharacteristics(user);
+            continue;
         case 2:
-            std::cout << "Change password selected. Exiting program for now.\n";
-            goBack = true;
-            break;
+            editUserInformation(user);
+            continue;
         case 3:
             std::cout << "Going back to the main menu.\n";
-            goBack = true;
+            back = false;
             break;
         default:
             std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
@@ -156,5 +231,27 @@ void displayMenu2(User& user) {
         default:
             std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
         }
+    }
+}
+
+
+void printUserInformation(const User& user) {
+    std::cout << "Username: "<< user.username << "\n";
+    if (user.accountType == 'S') std::cout << "STANDARD account" << "\n";
+    else std::cout << "PREMIUM account" << "\n";
+    std::cout << "Age: " << user.age << "\n";
+    if (user.gender == 'M') std::cout << "Gender: male" << "\n";
+    else std::cout << "Gender: female" << "\n";
+    std::cout << "Height: " << user.height << "\n";
+    std::cout << "Weight: " << user.weight << "\n";
+    std::cout << "Daily activity index: " << user.activity << '\n';
+    if (user.goal == 'L') std::cout << "Goal: lose" << "\n";
+    else if (user.goal == 'M') std::cout << "Goal: maintain" << "\n";
+    else std::cout << "Goal: gain" << "\n";
+    std::cout << "Daily Calories: " << user.dailyCalories << " kcal\n";
+    if (user.accountType == 'P') {
+        std::cout << "Protein: " << user.protein << " g\n";
+        std::cout << "Fat: " << user.fat << " g\n";
+        std::cout << "Carbs: " << user.carbs << " g\n";
     }
 }

@@ -6,5 +6,7 @@
 void displayMenu2(User& user);
 void displayMyAccountMenu(User& user);
 void editUserProfile(User& user);
+void printUserInformation(const User& user);
+void editUserInformation(User& user);
 
 #endif // MENU2_H
