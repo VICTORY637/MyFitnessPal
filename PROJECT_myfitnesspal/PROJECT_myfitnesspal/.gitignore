@@ -1,0 +1,30 @@
+# Ignore build directories and binaries
+bin/
+obj/
+Debug/
+Release/
+
+# Ignore IDE-specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+~*
+
+# Ignore sensitive files
+*.env
+*.config
+
+# Ignore compiled files
+*.exe
+*.dll
+*.o
+*.lib
+*.pdb
