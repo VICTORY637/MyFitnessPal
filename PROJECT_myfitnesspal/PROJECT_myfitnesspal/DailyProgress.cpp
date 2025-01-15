@@ -1,4 +1,6 @@
 #include "DailyProgress.h"
+#include "User.logging.h"
+
 #include <iostream>
 #include <fstream>
 
@@ -26,14 +28,11 @@ void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std
     }
 
     outFile.close();
-    std::cout << "Daily progress data saved successfully.\n";
 }
-
 
 std::vector<DailyProgress> loadDailyProgress(const std::string& filename) {
     std::ifstream inFile(filename);
     if (!inFile) {
-        std::cerr << "No daily progress data file found. Starting fresh.\n";
         return {};
     }
 
@@ -71,7 +70,6 @@ std::vector<DailyProgress> loadDailyProgress(const std::string& filename) {
     return progressData;
 }
 
-
 void displayDailyProgress(const DailyProgress& progress) {
     std::cout << "\nDaily Progress for " << progress.date << ":\n";
     std::cout << "Calorie balance: " << progress.calorieBalance << " kcal\n";
@@ -87,7 +85,6 @@ void displayDailyProgress(const DailyProgress& progress) {
         std::cout << "- " << workout << "\n";
     }
 }
-
 
 void editDailyProgress(DailyProgress& progress) {
     int choice;
@@ -130,7 +127,6 @@ void editDailyProgress(DailyProgress& progress) {
             std::cin >> index;
             if (index > 0 && index <= progress.meals.size()) {
                 progress.meals.erase(progress.meals.begin() + index - 1);
-                std::cout << "Meal removed successfully.\n";
             }
             else {
                 std::cout << "Invalid index.\n";
@@ -155,30 +151,31 @@ void editDailyProgress(DailyProgress& progress) {
             std::cin >> index;
             if (index > 0 && index <= progress.workouts.size()) {
                 progress.workouts.erase(progress.workouts.begin() + index - 1);
-                std::cout << "Workout removed successfully.\n";
             }
             else {
                 std::cout << "Invalid index.\n";
             }
             break;
         }
-        case 5:
-            int waterToAdd;
+        case 5: {
+            int cups;
             std::cout << "Enter number of water cups to add: ";
-            std::cin >> waterToAdd;
-            progress.waterCups += waterToAdd;
+            std::cin >> cups;
+            progress.waterCups += cups;
             break;
-        case 6:
-            int waterToRemove;
+        }
+        case 6: {
+            int cups;
             std::cout << "Enter number of water cups to remove: ";
-            std::cin >> waterToRemove;
-            if (waterToRemove > progress.waterCups) {
+            std::cin >> cups;
+            if (cups > progress.waterCups) {
                 std::cout << "Not enough water cups to remove.\n";
             }
             else {
-                progress.waterCups -= waterToRemove;
+                progress.waterCups -= cups;
             }
             break;
+        }
         case 7:
             done = true;
             break;

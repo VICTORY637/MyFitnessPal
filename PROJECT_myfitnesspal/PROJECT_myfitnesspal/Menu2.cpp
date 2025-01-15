@@ -2,17 +2,14 @@
 #include "User.logging.h"
 #include "Calculations.h"
 #include "DailyProgress.h"
-
-
 #include <iostream>
-
 
 void editPhisicalCharacteristics(User& user) {
     int choice;
     bool done = false;
 
     while (!done) {
-        std::cout << "\nEdit Phisical Characteristics:\n";
+        std::cout << "\nEdit Physical Characteristics:\n";
         std::cout << "1. Edit Age\n";
         std::cout << "2. Edit Weight\n";
         std::cout << "3. Edit Goal\n";
@@ -57,19 +54,16 @@ void editPhisicalCharacteristics(User& user) {
             if (user.accountType == 'p') user.accountType = 'P';
             break;
         case 6:
-            std::cout << "Returning to previous menu.\n";
             done = true;
             break;
         default:
             std::cout << "Invalid choice. Please enter a number between 1 and 6.\n";
         }
     }
-    //Calculations
+
     calculateCaloriesAndMacros(user);
     std::cout << "Account edited successfully!\n";
 }
-
-
 
 void editUserInformation(User& user) {
     int choice;
@@ -131,7 +125,6 @@ void editUserInformation(User& user) {
             break;
         }
         case 3:
-            std::cout << "Returning to the previous menu.\n";
             done = true;
             break;
         default:
@@ -140,43 +133,33 @@ void editUserInformation(User& user) {
     }
 }
 
-
-
-
-
-
-
 void displayMyAccountMenu(User& user) {
     int choice;
-
-    std::cout << "\nMy Account:\n";
-    printUserInformation(user);
-
     bool back = true;
+
     while (back) {
+        std::cout << "\nMy Account:\n";
+        printUserInformation(user);
         std::cout << "1. Edit physical characteristics\n";
         std::cout << "2. Edit user information\n";
         std::cout << "3. Back\n";
         std::cout << "Choose an option: ";
 
-        while (true) {
-            if (!(std::cin >> choice)) {
-                std::cin.clear();
-                std::cin.ignore(10000, '\n');
-                std::cout << "Invalid input. Please enter a number between 1 and 3.\n";
-            }
-            else break;
+        if (!(std::cin >> choice)) {
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Invalid input. Please enter a number between 1 and 3.\n";
+            continue;
         }
 
         switch (choice) {
         case 1:
             editPhisicalCharacteristics(user);
-            continue;
+            break;
         case 2:
             editUserInformation(user);
-            continue;
+            break;
         case 3:
-            std::cout << "Going back to the main menu.\n";
             back = false;
             break;
         default:
@@ -185,11 +168,7 @@ void displayMyAccountMenu(User& user) {
     }
 }
 
-
-
-
-
-void displayMenu2(DailyProgress& currentProgress) {
+void displayMenu2(User& user, DailyProgress& currentProgress) {
     int choice;
     bool exitProgram = false;
 
@@ -217,7 +196,7 @@ void displayMenu2(DailyProgress& currentProgress) {
             editDailyProgress(currentProgress);
             break;
         case 3:
-            // Future feature: Display history
+            // History functionality can be implemented here
             break;
         case 4:
             displayMyAccountMenu(user);
@@ -231,22 +210,15 @@ void displayMenu2(DailyProgress& currentProgress) {
     }
 }
 
-
-
-
 void printUserInformation(const User& user) {
-    std::cout << "Username: "<< user.username << "\n";
-    if (user.accountType == 'S') std::cout << "STANDARD account" << "\n";
-    else std::cout << "PREMIUM account" << "\n";
+    std::cout << "Username: " << user.username << "\n";
+    std::cout << (user.accountType == 'S' ? "STANDARD account\n" : "PREMIUM account\n");
     std::cout << "Age: " << user.age << "\n";
-    if (user.gender == 'M') std::cout << "Gender: male" << "\n";
-    else std::cout << "Gender: female" << "\n";
-    std::cout << "Height: " << user.height << "\n";
-    std::cout << "Weight: " << user.weight << "\n";
-    std::cout << "Daily activity index: " << user.activity << '\n';
-    if (user.goal == 'L') std::cout << "Goal: lose" << "\n";
-    else if (user.goal == 'M') std::cout << "Goal: maintain" << "\n";
-    else std::cout << "Goal: gain" << "\n";
+    std::cout << (user.gender == 'M' ? "Gender: male\n" : "Gender: female\n");
+    std::cout << "Height: " << user.height << " cm\n";
+    std::cout << "Weight: " << user.weight << " kg\n";
+    std::cout << "Daily activity index: " << user.activity << "\n";
+    std::cout << "Goal: " << (user.goal == 'L' ? "Lose" : user.goal == 'M' ? "Maintain" : "Gain") << "\n";
     std::cout << "Daily Calories: " << user.dailyCalories << " kcal\n";
     if (user.accountType == 'P') {
         std::cout << "Protein: " << user.protein << " g\n";

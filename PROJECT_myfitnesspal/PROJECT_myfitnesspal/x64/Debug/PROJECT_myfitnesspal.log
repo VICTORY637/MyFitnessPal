@@ -1,17 +1,8 @@
-﻿  Menu2.cpp
+﻿  Calculations.cpp
+  DailyProgress.cpp
+  FileManager.cpp
+  Menu2.cpp
   PROJECT_myfitnesspal.cpp
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\Menu2.cpp(223,34): error C2065: 'user': undeclared identifier
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(42,5): error C2660: 'displayMenu2': function does not take 2 arguments
-      C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\Menu2.h(8,6):
-      see declaration of 'displayMenu2'
-      C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(42,5):
-      while trying to match the argument list '(User, DailyProgress)'
-  
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(44,5): error C2059: syntax error: '?'
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(45,105): error C2143: syntax error: missing ';' before '{'
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(46,16): error C2065: 'dp': undeclared identifier
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(47,10): error C2059: syntax error: ')'
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(49,9): error C2065: 'updateIt': undeclared identifier
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(50,10): error C2065: 'updateIt': undeclared identifier
-C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\PROJECT_myfitnesspal.cpp(16,21): error C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  User.logging.cpp
   Generating Code...
+  PROJECT_myfitnesspal.vcxproj -> C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\x64\Debug\PROJECT_myfitnesspal.exe

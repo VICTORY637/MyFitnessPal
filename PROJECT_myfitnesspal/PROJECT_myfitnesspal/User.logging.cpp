@@ -1,21 +1,14 @@
 #include "User.logging.h"
 #include "Calculations.h"
 #include "Menu2.h"
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
 #include <ctime>
 
-//functions here:
-// displayMainMenu()
-// logIn()
-//displayMotivationalQuote()
-//signIn()
-
+User* currentUser = nullptr;
 std::vector<User> userDatabase;
-
 
 void displayMainMenu() {
     int choice;
@@ -38,6 +31,7 @@ void displayMainMenu() {
         switch (choice) {
         case 1:
             logIn();
+            if (currentUser) return;
             break;
         case 2:
             signIn();
@@ -52,35 +46,24 @@ void displayMainMenu() {
     }
 }
 
-
-
 void logIn() {
-
     std::string username, password;
     std::cout << "Enter username: ";
     std::cin >> username;
     std::cout << "Enter password: ";
     std::cin >> password;
 
-    bool userFound = false;
     for (auto& user : userDatabase) {
         if (user.username == username && user.password == password) {
-            userFound = true;
+            currentUser = &user;
             std::cout << "Welcome, " << username << "!\n";
             displayMotivationalQuote();
-            
-            displayMenu2(user);
-            break;
+            return;
         }
     }
 
-    if (!userFound) {
-        std::cout << "Invalid username or password.\n";
-    }
+    std::cout << "Invalid username or password.\n";
 }
-
-
-
 
 void displayMotivationalQuote() {
     const char* quotes[] = {
@@ -107,12 +90,6 @@ void displayMotivationalQuote() {
     std::cout << "\nMotivational Quote of the day: " << quotes[randomIndex] << "\n\n";
 }
 
-
-
-
-
-
-
 void signIn() {
     User newUser;
     std::cout << "Enter username: ";
@@ -128,7 +105,6 @@ void signIn() {
     std::cout << "Enter password: ";
     std::cin >> newUser.password;
 
-    // Age
     do {
         std::cout << "Enter age: ";
         if (!(std::cin >> newUser.age) || newUser.age < 0 || newUser.age > 120) {
@@ -141,7 +117,6 @@ void signIn() {
         }
     } while (true);
 
-    // Gender
     do {
         std::cout << "Enter gender (M/F): ";
         std::cin >> newUser.gender;
@@ -156,7 +131,6 @@ void signIn() {
         }
     } while (true);
 
-    // Height
     do {
         std::cout << "Enter height (cm): ";
         if (!(std::cin >> newUser.height) || newUser.height < 50 || newUser.height > 250) {
@@ -169,7 +143,6 @@ void signIn() {
         }
     } while (true);
 
-    // Weight
     do {
         std::cout << "Enter weight (kg): ";
         if (!(std::cin >> newUser.weight) || newUser.weight < 15 || newUser.weight > 400) {
@@ -182,7 +155,6 @@ void signIn() {
         }
     } while (true);
 
-    // Daily activity
     do {
         std::cout << "Rate your daily activity from 1 to 5: ";
         if (!(std::cin >> newUser.activity) || newUser.activity < 1 || newUser.activity > 5) {
@@ -195,7 +167,6 @@ void signIn() {
         }
     } while (true);
 
-    // Aim
     do {
         std::cout << "Enter goal (\"L\" for LOSE / \"M\" for MAINTAIN / \"G\" for GAIN): ";
         std::cin >> newUser.goal;
@@ -203,7 +174,7 @@ void signIn() {
         if (newUser.goal == 'm') newUser.goal = 'M';
         if (newUser.goal == 'g') newUser.goal = 'G';
 
-        if (newUser.goal != 'L' && newUser.goal !='M' && newUser.goal != 'G') {
+        if (newUser.goal != 'L' && newUser.goal != 'M' && newUser.goal != 'G') {
             std::cout << "Invalid goal. Please enter L, M or G.\n";
             std::cin.clear();
             std::cin.ignore(10000, '\n');
@@ -213,8 +184,6 @@ void signIn() {
         }
     } while (true);
 
-    // Account type
-    std::string accountType;
     do {
         std::cout << "Enter account type (S for Standard / P for Premium): ";
         std::cin >> newUser.accountType;
@@ -231,10 +200,7 @@ void signIn() {
         }
     } while (true);
 
-    //Calculations
     calculateCaloriesAndMacros(newUser);
-
-
     userDatabase.push_back(newUser);
     std::cout << "Account created successfully!\n";
 }

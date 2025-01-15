@@ -5,7 +5,8 @@
 #include "DailyProgress.h"
 
 
-void displayMenu2(User& user);
+void displayMenu2(User& user, DailyProgress& currentProgress);
+
 void displayMyAccountMenu(User& user);
 void printUserInformation(const User& user);
 void editUserInformation(User& user);
