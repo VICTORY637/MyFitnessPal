@@ -190,10 +190,10 @@ void displayMenu2(User& user, DailyProgress& currentProgress) {
 
         switch (choice) {
         case 1:
-            displayDailyProgress(currentProgress);
+            displayDailyProgress(currentProgress, user);
             break;
         case 2:
-            editDailyProgress(currentProgress);
+            editDailyProgress(currentProgress, user);
             break;
         case 3:
             // History functionality can be implemented here

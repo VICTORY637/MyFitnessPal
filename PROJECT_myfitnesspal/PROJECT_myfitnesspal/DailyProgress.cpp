@@ -1,10 +1,40 @@
 #include "DailyProgress.h"
 #include "User.logging.h"
-
 #include <iostream>
 #include <fstream>
 
-void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std::string& filename) {
+//void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std::string& filename) {
+//    std::ofstream outFile(filename, std::ios::trunc);
+//    if (!outFile) {
+//        std::cerr << "Error: Unable to save daily progress data to file.\n";
+//        return;
+//    }
+//
+//    for (const auto& progress : progressData) {
+//        outFile << progress.date << "\n";
+//        outFile << progress.calorieBalance << "\n";
+//        outFile << progress.proteinIntake << "\n";
+//        outFile << progress.fatIntake << "\n";
+//        outFile << progress.carbsIntake << "\n";
+//        outFile << progress.waterCups << "\n";
+//
+//        outFile << progress.meals.size() << "\n";
+//        for (const auto& meal : progress.meals) {
+//            outFile << meal << "\n";
+//        }
+//
+//        outFile << progress.workouts.size() << "\n";
+//        for (const auto& workout : progress.workouts) {
+//            outFile << workout << "\n";
+//        }
+//    }
+//
+//    outFile.close();
+//    std::cout << "Daily progress data saved successfully.\n";
+//}
+
+void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std::string& username) {
+    std::string filename = "progress_" + username + ".txt";
     std::ofstream outFile(filename, std::ios::trunc);
     if (!outFile) {
         std::cerr << "Error: Unable to save daily progress data to file.\n";
@@ -14,6 +44,9 @@ void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std
     for (const auto& progress : progressData) {
         outFile << progress.date << "\n";
         outFile << progress.calorieBalance << "\n";
+        outFile << progress.proteinIntake << "\n";
+        outFile << progress.fatIntake << "\n";
+        outFile << progress.carbsIntake << "\n";
         outFile << progress.waterCups << "\n";
 
         outFile << progress.meals.size() << "\n";
@@ -28,11 +61,60 @@ void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std
     }
 
     outFile.close();
+    std::cout << "Daily progress data for " << username << " saved successfully.\n";
 }
 
-std::vector<DailyProgress> loadDailyProgress(const std::string& filename) {
+
+//std::vector<DailyProgress> loadDailyProgress(const std::string& filename) {
+//    std::ifstream inFile(filename);
+//    if (!inFile) {
+//        std::cerr << "No daily progress data file found. Starting fresh.\n";
+//        return {};
+//    }
+//
+//    std::vector<DailyProgress> progressData;
+//    DailyProgress progress;
+//
+//    while (std::getline(inFile, progress.date)) {
+//        inFile >> progress.calorieBalance;
+//        inFile >> progress.proteinIntake;
+//        inFile >> progress.fatIntake;
+//        inFile >> progress.carbsIntake;
+//        inFile >> progress.waterCups;
+//
+//        int mealsCount;
+//        inFile >> mealsCount;
+//        inFile.ignore();
+//        progress.meals.clear();
+//        for (int i = 0; i < mealsCount; ++i) {
+//            std::string meal;
+//            std::getline(inFile, meal);
+//            progress.meals.push_back(meal);
+//        }
+//
+//        int workoutsCount;
+//        inFile >> workoutsCount;
+//        inFile.ignore();
+//        progress.workouts.clear();
+//        for (int i = 0; i < workoutsCount; ++i) {
+//            std::string workout;
+//            std::getline(inFile, workout);
+//            progress.workouts.push_back(workout);
+//        }
+//
+//        progressData.push_back(progress);
+//    }
+//
+//    inFile.close();
+//    return progressData;
+//}
+
+
+std::vector<DailyProgress> loadDailyProgress(const std::string& username) {
+    std::string filename = "progress_" + username + ".txt";
     std::ifstream inFile(filename);
     if (!inFile) {
+        std::cerr << "No progress data file found for " << username << ". Starting fresh.\n";
         return {};
     }
 
@@ -41,6 +123,9 @@ std::vector<DailyProgress> loadDailyProgress(const std::string& filename) {
 
     while (std::getline(inFile, progress.date)) {
         inFile >> progress.calorieBalance;
+        inFile >> progress.proteinIntake;
+        inFile >> progress.fatIntake;
+        inFile >> progress.carbsIntake;
         inFile >> progress.waterCups;
 
         int mealsCount;
@@ -70,9 +155,20 @@ std::vector<DailyProgress> loadDailyProgress(const std::string& filename) {
     return progressData;
 }
 
-void displayDailyProgress(const DailyProgress& progress) {
+
+void displayDailyProgress(const DailyProgress& progress, const User& user) {
     std::cout << "\nDaily Progress for " << progress.date << ":\n";
-    std::cout << "Calorie balance: " << progress.calorieBalance << " kcal\n";
+
+    if (user.accountType == 'P') {
+        std::cout << "Calorie balance: " << progress.calorieBalance << "/" << user.dailyCalories << " kcal\n";
+        std::cout << "Protein intake: " << progress.proteinIntake << "/" << user.protein << " g\n";
+        std::cout << "Fat intake: " << progress.fatIntake << "/" << user.fat << " g\n";
+        std::cout << "Carbs intake: " << progress.carbsIntake << "/" << user.carbs << " g\n";
+    }
+    else {
+        std::cout << "Calorie balance: " << progress.calorieBalance << "/" << user.dailyCalories << " kcal\n";
+    }
+
     std::cout << "Water cups: " << progress.waterCups << "\n";
 
     std::cout << "\nMeals:\n";
@@ -86,7 +182,7 @@ void displayDailyProgress(const DailyProgress& progress) {
     }
 }
 
-void editDailyProgress(DailyProgress& progress) {
+void editDailyProgress(DailyProgress& progress, const User& user) {
     int choice;
     bool done = false;
 
@@ -114,6 +210,29 @@ void editDailyProgress(DailyProgress& progress) {
             std::cout << "Enter meal: ";
             std::cin.ignore();
             std::getline(std::cin, meal);
+
+            double calories = 0.0, protein = 0.0, fat = 0.0, carbs = 0.0;
+            if (user.accountType == 'P') {
+                std::cout << "Enter calories: ";
+                std::cin >> calories;
+                std::cout << "Enter protein (grams): ";
+                std::cin >> protein;
+                std::cout << "Enter fat (grams): ";
+                std::cin >> fat;
+                std::cout << "Enter carbs (grams): ";
+                std::cin >> carbs;
+
+                progress.calorieBalance += calories;
+                progress.proteinIntake += protein;
+                progress.fatIntake += fat;
+                progress.carbsIntake += carbs;
+            }
+            else {
+                std::cout << "Enter calories: ";
+                std::cin >> calories;
+                progress.calorieBalance += calories;
+            }
+
             progress.meals.push_back(meal);
             break;
         }
@@ -121,6 +240,10 @@ void editDailyProgress(DailyProgress& progress) {
             if (progress.meals.empty()) {
                 std::cout << "No meals to remove.\n";
                 break;
+            }
+            std::cout << "\nCurrent meals:\n";
+            for (size_t i = 0; i < progress.meals.size(); ++i) {
+                std::cout << i + 1 << ". " << progress.meals[i] << "\n";
             }
             std::cout << "Enter the number of the meal to remove: ";
             size_t index;
@@ -146,6 +269,10 @@ void editDailyProgress(DailyProgress& progress) {
                 std::cout << "No workouts to remove.\n";
                 break;
             }
+            std::cout << "\nCurrent workouts:\n";
+            for (size_t i = 0; i < progress.workouts.size(); ++i) {
+                std::cout << i + 1 << ". " << progress.workouts[i] << "\n";
+            }
             std::cout << "Enter the number of the workout to remove: ";
             size_t index;
             std::cin >> index;
@@ -158,21 +285,21 @@ void editDailyProgress(DailyProgress& progress) {
             break;
         }
         case 5: {
-            int cups;
+            int waterToAdd;
             std::cout << "Enter number of water cups to add: ";
-            std::cin >> cups;
-            progress.waterCups += cups;
+            std::cin >> waterToAdd;
+            progress.waterCups += waterToAdd;
             break;
         }
         case 6: {
-            int cups;
+            int waterToRemove;
             std::cout << "Enter number of water cups to remove: ";
-            std::cin >> cups;
-            if (cups > progress.waterCups) {
+            std::cin >> waterToRemove;
+            if (waterToRemove > progress.waterCups) {
                 std::cout << "Not enough water cups to remove.\n";
             }
             else {
-                progress.waterCups -= cups;
+                progress.waterCups -= waterToRemove;
             }
             break;
         }

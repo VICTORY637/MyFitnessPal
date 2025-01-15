@@ -7,7 +7,7 @@
 
 void displayMenu2(User& user, DailyProgress& currentProgress);
 
-void displayMyAccountMenu(User& user);
+void displayDailyProgress(const DailyProgress& progress, const User& user);
 void printUserInformation(const User& user);
 void editUserInformation(User& user);
 void editPhisicalCharacteristics(User& user);
