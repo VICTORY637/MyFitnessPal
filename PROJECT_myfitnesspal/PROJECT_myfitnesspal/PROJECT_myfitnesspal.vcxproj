@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Calculations.cpp" />
+    <ClCompile Include="DailyProgress.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Menu2.cpp" />
     <ClCompile Include="PROJECT_myfitnesspal.cpp" />
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculations.h" />
+    <ClInclude Include="DailyProgress.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="Menu2.h" />
     <ClInclude Include="User.logging.h" />

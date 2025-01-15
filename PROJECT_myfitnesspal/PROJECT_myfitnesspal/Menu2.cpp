@@ -1,6 +1,7 @@
 ﻿#include "Menu2.h"
 #include "User.logging.h"
 #include "Calculations.h"
+#include "DailyProgress.h"
 
 
 #include <iostream>
@@ -188,7 +189,7 @@ void displayMyAccountMenu(User& user) {
 
 
 
-void displayMenu2(User& user) {
+void displayMenu2(DailyProgress& currentProgress) {
     int choice;
     bool exitProgram = false;
 
@@ -210,22 +211,18 @@ void displayMenu2(User& user) {
 
         switch (choice) {
         case 1:
-            std::cout << "Option 1 selected. Exiting program for now.\n";
-            exitProgram = true;
+            displayDailyProgress(currentProgress);
             break;
         case 2:
-            std::cout << "Option 2 selected. Exiting program for now.\n";
-            exitProgram = true;
+            editDailyProgress(currentProgress);
             break;
         case 3:
-            std::cout << "Option 3 selected. Exiting program for now.\n";
-            exitProgram = true;
+            // Future feature: Display history
             break;
         case 4:
             displayMyAccountMenu(user);
             break;
         case 5:
-            std::cout << "Logging out. Goodbye!\n";
             exitProgram = true;
             break;
         default:
@@ -233,6 +230,8 @@ void displayMenu2(User& user) {
         }
     }
 }
+
+
 
 
 void printUserInformation(const User& user) {
