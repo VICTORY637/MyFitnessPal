@@ -1,5 +1,6 @@
 #include "User.logging.h"
 #include "Calculations.h"
+#include "Menu2.h"
 
 #include <iostream>
 #include <string>
@@ -52,42 +53,29 @@ void displayMainMenu() {
 }
 
 
+
 void logIn() {
+
     std::string username, password;
     std::cout << "Enter username: ";
     std::cin >> username;
     std::cout << "Enter password: ";
     std::cin >> password;
 
-
-    for (const auto& user : userDatabase) {
+    bool userFound = false;
+    for (auto& user : userDatabase) {
         if (user.username == username && user.password == password) {
+            userFound = true;
             std::cout << "Welcome, " << username << "!\n";
             displayMotivationalQuote();
-            if (user.accountType == 'S') std::cout << "STANDARD account" << "\n";
-            else std::cout << "PREMIUM account" << "\n";
-            std::cout << "Your info: \n";
-            std::cout << "Age: " << user.age << "\n";
-            if (user.gender == 'M') std::cout << "Gender: male" << "\n";
-            else std::cout << "Gender: female" << "\n";
-            std::cout << "Height: " << user.height << "\n";
-            std::cout << "Weight: " << user.weight << "\n";
-            std::cout << "Daily activity index: " << user.activity << '\n';
-            if (user.goal == 'L') std::cout << "Goal: lose" << "\n";
-            else if (user.goal == 'M') std::cout << "Goal: maintain" << "\n";
-            else std::cout << "Goal: gain" << "\n";
-            std::cout << "Daily Calories: " << user.dailyCalories << " kcal\n";
-            if (user.accountType == 'P') {
-                std::cout << "Protein: " << user.protein << " g\n";
-                std::cout << "Fat: " << user.fat << " g\n";
-                std::cout << "Carbs: " << user.carbs << " g\n";
-                break;
-            }
+            
+            displayMenu2(user);
+            break;
         }
+    }
 
-        else {
-            std::cout << "Invalid username or password.\n";
-        }
+    if (!userFound) {
+        std::cout << "Invalid username or password.\n";
     }
 }
 

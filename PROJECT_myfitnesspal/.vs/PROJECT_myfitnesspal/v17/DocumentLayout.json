@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Menu2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\Menu2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\User.logging.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\Calculations.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Menu2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\Menu2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\FileManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\Calculations.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,24 +35,8 @@
       "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\User.logging.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\Calculations.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\User.logging.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\FileManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{4D7A20B1-620B-45CC-975E-20762F286DDA}|PROJECT_myfitnesspal\\PROJECT_myfitnesspal.vcxproj|solutionrelative:PROJECT_myfitnesspal\\FileManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +46,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menu2.cpp",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Menu2.cpp",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Menu2.cpp",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Menu2.cpp",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\Menu2.cpp",
+              "ViewState": "AgIAACUAAACADrpjHQEawEIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-14T23:00:40.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.logging.cpp",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.cpp",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\User.logging.cpp",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.cpp",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\User.logging.cpp",
+              "ViewState": "AgIAANQAAADgfNY1QFYpwO4AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-14T17:26:34.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FileManager.h",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.h",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\FileManager.h",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.h",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\FileManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-14T17:27:36.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User.logging.h",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.h",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\User.logging.h",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.h",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\User.logging.h",
+              "ViewState": "AgIAAAcAAACA6Av6QtgLwAEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-14T17:25:30.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PROJECT_myfitnesspal.cpp",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-14T11:06:58.547Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -55,20 +128,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "Menu2.h",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Menu2.h",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Menu2.h",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Menu2.h",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\Menu2.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-14T23:00:21.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Calculations.h",
               "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h",
               "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Calculations.h",
               "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h",
               "RelativeToolTip": "PROJECT_myfitnesspal\\Calculations.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-14T20:56:39.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "FileManager.cpp",
               "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.cpp",
               "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\FileManager.cpp",
@@ -77,58 +163,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T17:27:19.116Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "User.logging.cpp",
-              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.cpp",
-              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\User.logging.cpp",
-              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.cpp",
-              "RelativeToolTip": "PROJECT_myfitnesspal\\User.logging.cpp",
-              "ViewState": "AgIAACcAAAAAHA3t8+QuwDMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-14T17:26:34.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PROJECT_myfitnesspal.cpp",
-              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
-              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
-              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
-              "RelativeToolTip": "PROJECT_myfitnesspal\\PROJECT_myfitnesspal.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-14T11:06:58.547Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "User.logging.h",
-              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.h",
-              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\User.logging.h",
-              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.logging.h",
-              "RelativeToolTip": "PROJECT_myfitnesspal\\User.logging.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-14T17:25:30.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FileManager.h",
-              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.h",
-              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\FileManager.h",
-              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\FileManager.h",
-              "RelativeToolTip": "PROJECT_myfitnesspal\\FileManager.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-14T17:27:36.46Z",
               "EditorCaption": ""
             }
           ]
