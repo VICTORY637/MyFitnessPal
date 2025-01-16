@@ -252,7 +252,7 @@ void displayMenu2(User& user, DailyProgress& currentProgress) {
             displayMyAccountMenu(user);
             break;
         case 5:
-            exitProgram = true;
+            displayMainMenu();
             break;
         default:
             std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
