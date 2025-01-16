@@ -14,7 +14,7 @@ void editPhisicalCharacteristics(User& user) {
         std::cout << "2. Edit Weight\n";
         std::cout << "3. Edit Goal\n";
         std::cout << "4. Edit Gender\n";
-        std::cout << "5. Edit Account Type\n";
+        /*std::cout << "5. Edit Account Type\n";*/
         std::cout << "6. Back\n";
         std::cout << "Choose an option: ";
 
@@ -47,12 +47,12 @@ void editPhisicalCharacteristics(User& user) {
             if (user.gender == 'm') user.gender = 'M';
             if (user.gender == 'f') user.gender = 'F';
             break;
-        case 5:
+        /*case 5:
             std::cout << "Enter new account type (S for Standard, P for Premium): ";
             std::cin >> user.accountType;
             if (user.accountType == 's') user.accountType = 'S';
             if (user.accountType == 'p') user.accountType = 'P';
-            break;
+            break;*/
         case 6:
             done = true;
             break;
@@ -73,7 +73,8 @@ void editUserInformation(User& user) {
         std::cout << "\nEdit User Information:\n";
         std::cout << "1. Change Username\n";
         std::cout << "2. Change Password\n";
-        std::cout << "3. Back\n";
+        std::cout << "3. Change Account type\n";
+        std::cout << "4. Back\n";
         std::cout << "Choose an option: ";
 
         if (!(std::cin >> choice)) {
@@ -125,6 +126,12 @@ void editUserInformation(User& user) {
             break;
         }
         case 3:
+            std::cout << "Enter new account type (S for Standard, P for Premium): ";
+            std::cin >> user.accountType;
+            if (user.accountType == 's') user.accountType = 'S';
+            if (user.accountType == 'p') user.accountType = 'P';
+            break;
+        case 4:
             done = true;
             break;
         default:
@@ -195,9 +202,52 @@ void displayMenu2(User& user, DailyProgress& currentProgress) {
         case 2:
             editDailyProgress(currentProgress, user);
             break;
-        case 3:
-            // History functionality can be implemented here
+        case 3: {
+            std::string filename = "progress_" + user.username + ".txt";
+            std::vector<DailyProgress> progressData = loadDailyProgress(filename);
+
+            int subChoice;
+            while (true) {
+                std::cout << "\nHistory Menu:\n";
+                std::cout << "1. View progress for a specific date\n";
+                std::cout << "2. Delete progress for a specific date\n";
+                std::cout << "3. Back to main menu\n";
+                std::cout << "Choose an option: ";
+
+                if (!(std::cin >> subChoice)) {
+                    std::cin.clear();
+                    std::cin.ignore(10000, '\n');
+                    std::cout << "Invalid input. Please enter a number between 1 and 3.\n";
+                    continue;
+                }
+
+                if (subChoice == 1) {
+                    std::cin.ignore();
+                    std::string date;
+                    std::cout << "Enter the date (YYYY-MM-DD) to view progress: ";
+                    std::getline(std::cin, date);
+
+                    displayProgressForDate(progressData, user, date);
+                }
+                else if (subChoice == 2) {
+                    std::cin.ignore();
+                    std::string date;
+                    std::cout << "Enter the date (YYYY-MM-DD) to delete progress: ";
+                    std::getline(std::cin, date);
+
+                    deleteProgressForDate(progressData, date);
+                    saveDailyProgress(progressData, filename);
+                }
+                else if (subChoice == 3) {
+                    break;
+                }
+                else {
+                    std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
+                }
+            }
             break;
+        }
+
         case 4:
             displayMyAccountMenu(user);
             break;

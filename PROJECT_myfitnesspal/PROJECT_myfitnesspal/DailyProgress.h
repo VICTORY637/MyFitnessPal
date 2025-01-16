@@ -19,7 +19,9 @@ struct DailyProgress {
 void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std::string& filename);
 std::vector<DailyProgress> loadDailyProgress(const std::string& filename);
 
-std::vector<DailyProgress> loadDailyProgress(const std::string& filename);
+void displayProgressForDate(const std::vector<DailyProgress>& progressData, const User& user, const std::string& date);
+void deleteProgressForDate(std::vector<DailyProgress>& progressData, const std::string& date);
+
 void displayDailyProgress(const DailyProgress& progress, const User& user);
 void editDailyProgress(DailyProgress& progress, const User& user);
 #endif // DAILY_PROGRESS_H
