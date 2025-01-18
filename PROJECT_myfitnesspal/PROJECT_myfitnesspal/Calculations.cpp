@@ -1,5 +1,5 @@
 #include "Calculations.h"
-#include "User.logging.h"
+#include "User.h"
 #include <iostream>
 
 void calculateCaloriesAndMacros(User& user) {

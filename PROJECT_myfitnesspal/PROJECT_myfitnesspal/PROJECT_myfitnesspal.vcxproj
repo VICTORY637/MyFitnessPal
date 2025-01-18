@@ -130,16 +130,18 @@
     <ClCompile Include="Calculations.cpp" />
     <ClCompile Include="DailyProgress.cpp" />
     <ClCompile Include="FileManager.cpp" />
-    <ClCompile Include="Menu2.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Others.cpp" />
     <ClCompile Include="PROJECT_myfitnesspal.cpp" />
-    <ClCompile Include="User.logging.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculations.h" />
     <ClInclude Include="DailyProgress.h" />
     <ClInclude Include="FileManager.h" />
-    <ClInclude Include="Menu2.h" />
-    <ClInclude Include="User.logging.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Others.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

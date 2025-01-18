@@ -18,7 +18,7 @@
     <ClCompile Include="PROJECT_myfitnesspal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="User.logging.cpp">
+    <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileManager.cpp">
@@ -27,27 +27,33 @@
     <ClCompile Include="Calculations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu2.cpp">
+    <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DailyProgress.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Others.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="User.logging.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Calculations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu2.h">
+    <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DailyProgress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Others.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

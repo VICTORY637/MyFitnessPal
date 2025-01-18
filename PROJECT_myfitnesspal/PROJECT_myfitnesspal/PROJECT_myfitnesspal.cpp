@@ -1,104 +1,65 @@
-#include <iostream>
-#include <ctime>
-#include "User.logging.h"
-#include "FileManager.h"
-#include "Menu2.h"
+#include "Menu.h"
+#include "User.h"
 #include "DailyProgress.h"
+#include "FileManager.h"
+#include "Calculations.h"
+#include "Others.h"
+
+#include <iostream>
+#include <vector>
 
 int main() {
+    // Load existing users from file
     loadUsersFromFile();
 
+    // Display the main menu
     displayMainMenu();
 
-    /*if (currentUser) {
-        std::vector<DailyProgress> progressData = loadDailyProgress("progress.txt");
-
-        time_t now = time(0);
-        tm localTime;
-        localtime_s(&localTime, &now);
-        char dateBuffer[11];
-        strftime(dateBuffer, 11, "%Y-%m-%d", &localTime);
-        std::string todayDate(dateBuffer);
-
+    if (currentUser) {
+        // Load or initialize daily progress for the current user
+        std::string currentDate = getCurrentDate();
         DailyProgress currentProgress;
-        currentProgress.date = todayDate;
+        std::vector<DailyProgress> userProgress = loadDailyProgress(currentUser->username);
 
-        auto it = std::find_if(progressData.begin(), progressData.end(), [&](const DailyProgress& dp) {
-            return dp.date == todayDate;
-            });
-
-        if (it != progressData.end()) {
-            currentProgress = *it;
+        // Check if there's progress for today
+        bool progressFound = false;
+        for (auto& progress : userProgress) {
+            if (progress.date == currentDate) {
+                currentProgress = progress;
+                progressFound = true;
+                break;
+            }
         }
-        else {
-            progressData.push_back(currentProgress);
+
+        if (!progressFound) {
+            // Initialize new progress for the day
+            currentProgress.date = currentDate;
         }
 
+        // Show the user's menu2
         displayMenu2(*currentUser, currentProgress);
 
-        auto updateIt = std::find_if(progressData.begin(), progressData.end(), [&](const DailyProgress& dp) {
-            return dp.date == currentProgress.date;
-            });
-
-        if (updateIt != progressData.end()) {
-            *updateIt = currentProgress;
+        // Save the updated progress to file
+        if (progressFound) {
+            for (auto& progress : userProgress) {
+                if (progress.date == currentDate) {
+                    progress = currentProgress;
+                    break;
+                }
+            }
+        }
+        else {
+            userProgress.push_back(currentProgress);
         }
 
-        saveDailyProgress(progressData, "progress.txt");
-    }
-    else {
-        std::cout << "No user logged in. Exiting program.\n";
+        saveDailyProgress(userProgress, currentUser->username);
+
+        // Reset user pointer to allow re-login or exit
+        currentUser = nullptr;
     }
 
+    // Save users to file before exiting
     saveUsersToFile();
 
     return 0;
-}*/
-
-    if (currentUser) {
-        std::string filename = "progress_" + currentUser->username + ".txt";
-        std::vector<DailyProgress> progressData = loadDailyProgress(filename);
-
-        DailyProgress currentProgress;
-        time_t now = time(0);
-        tm localTime;
-        localtime_s(&localTime, &now);
-        char dateBuffer[11];
-        strftime(dateBuffer, 11, "%Y-%m-%d", &localTime);
-        std::string todayDate(dateBuffer);
-
-
-        auto it = std::find_if(progressData.begin(), progressData.end(), [&](const DailyProgress& dp) {
-            return dp.date == todayDate;
-            });
-
-        if (it != progressData.end()) {
-            currentProgress = *it;
-        }
-        else {
-            currentProgress.date = todayDate;
-            progressData.push_back(currentProgress);
-        }
-
-        displayMenu2(*currentUser, currentProgress);
-
-
-
-
-
-        auto updateIt = std::find_if(progressData.begin(), progressData.end(), [&](const DailyProgress& dp) {
-            return dp.date == currentProgress.date;
-            });
-
-        if (updateIt != progressData.end()) {
-            *updateIt = currentProgress;
-        }
-
-        saveDailyProgress(progressData, filename);
-    }
-    else {
-        std::cout << "No user logged in. Exiting program.\n";
-    }
-
-    saveUsersToFile();
 }
