@@ -123,12 +123,25 @@ void editDailyProgress(DailyProgress& progress, const User& user) {
             break;
         }
         case 5: {
-            progress.waterCups += inputIntValidatedData("Enter number of water cups to add: ", 0, 30);
+            progress.waterCups += inputIntValidatedData("Enter number of water cups to add: ", 1, 30);
             break;
         }
         case 6: {
-            if (progress.waterCups > 0) {
-                progress.waterCups -= inputIntValidatedData("Enter number of water cups to remove: ", 0, progress.waterCups);
+            if (progress.waterCups = 1) {
+                std::cout << "There is only one cup added.\n";
+                int choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
+
+                if (choice == 1) {
+                    progress.waterCups = 0;
+                    std::cout << "Cups removed successfully.\n";
+                }
+                else {
+                    std::cout << "No cups were removed.\n";
+                }
+                break;
+            }
+            else if (progress.waterCups > 1) {
+                progress.waterCups -= inputIntValidatedData("Enter number of water cups to remove: ", 1, progress.waterCups);
                 break;
             }
             std::cout << "You already have 0 cups.\n";
@@ -214,6 +227,26 @@ void removeMeal(DailyProgress& progress, const User& user) {
         return;
     }
 
+    else if (progress.meals.size() == 1) {
+        std::cout << "There is only one meal in the list: " << progress.meals[0].name << ".\n";
+        int choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
+
+        if (choice == 1) {
+            const Meal& meal = progress.meals[0];
+            progress.calorieBalance -= meal.calories;
+            progress.proteinIntake -= meal.protein;
+            progress.fatIntake -= meal.fat;
+            progress.carbsIntake -= meal.carbs;
+
+            progress.meals.erase(progress.meals.begin());
+            std::cout << "Meal removed successfully.\n";
+        }
+        else {
+            std::cout << "No meal was removed.\n";
+        }
+        return;
+    }
+
     std::cout << "\nCurrent meals:\n";
     for (int i = 0; i < progress.meals.size(); ++i) {
         std::cout << i + 1 << ". " << progress.meals[i].name << "\n";
@@ -233,6 +266,7 @@ void removeMeal(DailyProgress& progress, const User& user) {
 }
 
 
+
 void addWorkout(DailyProgress& progress) {
     Workout workout;
     std::cout << "Enter workout name: ";
@@ -249,14 +283,33 @@ void removeWorkout(DailyProgress& progress) {
         std::cout << "No workouts to remove.\n";
         return;
     }
+
+    if (progress.workouts.size() == 1) {
+        std::cout << "There is only one workout in the list: " << progress.workouts[0].name << ".\n";
+        int choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
+
+        if (choice == 1) {
+            const Workout& workout = progress.workouts[0];
+            progress.calorieBalance += workout.caloriesBurned;
+            progress.workouts.erase(progress.workouts.begin());
+            std::cout << "Workout removed successfully.\n";
+        }
+        else {
+            std::cout << "No workout was removed.\n";
+        }
+        return;
+    }
+
     std::cout << "\nCurrent workouts:\n";
     for (int i = 0; i < progress.workouts.size(); ++i) {
         std::cout << i + 1 << ". " << progress.workouts[i].name << "\n";
     }
 
     int index = inputIntValidatedData("Enter the number of the workout to remove: ", 1, progress.workouts.size());
-        const Workout& workout = progress.workouts[index - 1];
-        progress.calorieBalance += workout.caloriesBurned;
-        progress.workouts.erase(progress.workouts.begin() + index - 1);
-        std::cout << "Workout removed successfully.\n";
+
+    const Workout& workout = progress.workouts[index - 1];
+    progress.calorieBalance += workout.caloriesBurned;
+    progress.workouts.erase(progress.workouts.begin() + index - 1);
+    std::cout << "Workout removed successfully.\n";
 }
+
