@@ -1,4 +1,19 @@
-﻿#include "Menu.h"
+﻿/**
+*
+* Solution to course project #09
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2024/2025
+*
+* @author VIKTORIYA ILIYANOVA BAMBALOVA
+* @idnumber 0MI0600473
+* @compiler VC
+*
+* This file contains the declarations of the functions which will be the MENUS
+* (a description of the menu structure can be found in the file "Structure.plan.txt"
+*/
+
+#include "Menu.h"
 #include "User.h"
 #include "FileManager.h"
 #include "DailyProgress.h"

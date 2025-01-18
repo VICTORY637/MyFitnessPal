@@ -1,3 +1,19 @@
+/**
+*
+* Solution to course project #09
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2024/2025
+*
+* @author VIKTORIYA ILIYANOVA BAMBALOVA
+* @idnumber 0MI0600473
+* @compiler VC
+*
+* This file contains the definitions of the functions which are related to the logging in and signing in of the users
+* as well as the visualizing and editing the user info
+* as well as the definition of the random quote function
+*/
+
 #include "User.h"
 #include "Calculations.h"
 #include "Menu.h"
@@ -123,7 +139,7 @@ void signIn() {
 
     userDatabase.push_back(newUser);
     saveUsersToFile();
-    std::cout << "Account created successfully!\n";
+    std::cout << "Account created successfully!\n\n";
 }
 
 

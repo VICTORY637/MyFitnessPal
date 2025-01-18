@@ -1,4 +1,23 @@
-﻿#ifndef USER_H
+﻿/**
+*
+* Solution to course project #09
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2024/2025
+*
+* @author VIKTORIYA ILIYANOVA BAMBALOVA
+* @idnumber 0MI0600473
+* @compiler VC
+*
+* This file contains the declaration of the functions which are related to the logging in,
+* signing in and editing the personal information of the users
+* as well as the declaration and definition of structure, needed for the organising of the
+* information of users in file
+* as well as the declarations of two global constants
+* as well as the declaration of the generationg a random quote function
+*/
+
+#ifndef USER_H
 #define USER_H
 
 #include <string>
@@ -20,9 +39,8 @@ struct User {
     double carbs = 0.0;
 };
 
-//global objects that can be defined and used in .cpp files without definition
 extern User* currentUser;//pointer to the struct of data of the current user 
-extern std::vector<User> userDatabase; //vector with elements of type User (array of struct)
+extern std::vector<User> userDatabase; //vector with elements of type User
 
 
 void logIn();

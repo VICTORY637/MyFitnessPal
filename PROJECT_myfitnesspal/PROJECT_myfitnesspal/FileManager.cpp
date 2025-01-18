@@ -1,3 +1,19 @@
+/**
+*
+* Solution to course project #09
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2024/2025
+*
+* @author VIKTORIYA ILIYANOVA BAMBALOVA
+* @idnumber 0MI0600473
+* @compiler VC
+*
+* This file contains the definitions of the functions which operating wiyh files,
+* keeping the user account information and the progress of the user for a specific date,
+* as well as the initializing of the string type constant, which will be the name of the file with users
+*/
+
 #include "FileManager.h"
 #include "User.h"
 #include "DailyProgress.h"
@@ -39,7 +55,7 @@ void saveUsersToFile() {
 void loadUsersFromFile() {
     std::ifstream inFile(userDatabaseFile);
     if (!inFile) {
-        //std::cerr << "No user data file found.\n";
+        //std::cout << "No user data file found.\n";
         //gorniqt komentar e za ulesnenie pri test :)
         return;
     }
