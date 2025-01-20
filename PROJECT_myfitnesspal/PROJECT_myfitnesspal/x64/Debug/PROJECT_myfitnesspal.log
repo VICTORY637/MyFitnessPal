@@ -1,4 +1,10 @@
-﻿  DailyProgress.cpp
+﻿  Calculations.cpp
+  DailyProgress.cpp
 C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\DailyProgress.cpp(255,105): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\PROJECT_myfitnesspal\DailyProgress.cpp(308,111): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Menu.cpp
+  Others.cpp
+  PROJECT_myfitnesspal.cpp
+  User.cpp
+  Generating Code...
   PROJECT_myfitnesspal.vcxproj -> C:\Users\vikto\OneDrive\Desktop\MyFitnessPal\PROJECT_myfitnesspal\x64\Debug\PROJECT_myfitnesspal.exe

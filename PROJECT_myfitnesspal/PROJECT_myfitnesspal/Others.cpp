@@ -86,3 +86,10 @@ std::string getCurrentDate() {
         (now.tm_mon < 9 ? "0" : "") + std::to_string(1 + now.tm_mon) + "-" +
         (now.tm_mday < 10 ? "0" : "") + std::to_string(now.tm_mday);
 }
+
+
+double round2(double value) {
+    value = (value * 100.0 + 0.5);
+    int temp = static_cast<int>(value);
+    return temp / 100.0;
+}

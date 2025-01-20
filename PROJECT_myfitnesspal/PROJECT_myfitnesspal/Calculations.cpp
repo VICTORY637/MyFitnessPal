@@ -16,8 +16,10 @@
 
 #include "Calculations.h"
 #include "User.h"
+#include "Others.h"
 
 #include <iostream>
+
 
 void calculateCaloriesAndMacros(User& user) {
     double bmr = 0.0;
@@ -39,13 +41,13 @@ void calculateCaloriesAndMacros(User& user) {
 
     const int dailyDeficit = 550;
     if (user.goal == 'L') {
-        user.dailyCalories = bmr * activityMultiplier - dailyDeficit;
+        user.dailyCalories = round2(bmr * activityMultiplier - dailyDeficit);
     }
     else if (user.goal == 'G') {
-        user.dailyCalories = bmr * activityMultiplier + dailyDeficit;
+        user.dailyCalories = round2(bmr * activityMultiplier + dailyDeficit);
     }
     else {
-        user.dailyCalories = bmr * activityMultiplier;
+        user.dailyCalories = round2(bmr * activityMultiplier);
     }
 
     double proteinPercent = 0.25;
@@ -63,8 +65,8 @@ void calculateCaloriesAndMacros(User& user) {
         carbsPercent = 0.35;
     }
 
-    user.protein = (user.dailyCalories * proteinPercent) / 4;
-    user.fat = (user.dailyCalories * fatPercent) / 9;
-    user.carbs = (user.dailyCalories * carbsPercent) / 4;
+    user.protein = round2((user.dailyCalories * proteinPercent) / 4);
+    user.fat = round2((user.dailyCalories * fatPercent) / 9);
+    user.carbs = round2((user.dailyCalories * carbsPercent) / 4);
 }
 
