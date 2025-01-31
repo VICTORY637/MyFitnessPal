@@ -21,6 +21,6 @@
 
 void displayMainMenu();
 void displayMenu2(User& user, DailyProgress& currentProgress);
-void displayHistoryMenu(User& user);
+void displayHistoryMenu(User& user, DailyProgress& progress);
 
 #endif

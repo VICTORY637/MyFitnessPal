@@ -17,6 +17,7 @@
 
 #include <string>
 
+bool isValidFileName(const std::string& username);
 char toUpper(char& letter);
 int inputIntValidatedData(const std::string& prompt, int min, int max);
 double inputDoubleValidatedData(const std::string& prompt, double min, double max);

@@ -50,39 +50,44 @@ void displayMyAccountMenu(User& user) {
 
 
 
-void displayHistoryMenu(User& user) {
-        std::string filename = user.username;
-        std::vector<DailyProgress> progressData = loadDailyProgress(filename);
 
-        int choice;
-        while (true) {
-            choice = inputIntValidatedData("\nHistory Menu:\n1. View progress for a specific date\n"
-                "2. Delete progress for a specific date\n"
-                "3. Back to main menu\nChoose an option: ", 1, 3);
-            if (choice == 1) { //View
-                std::cin.ignore();
-                std::string date;
-                std::cout << "Enter the date (YYYY-MM-DD) to view progress: ";
-                std::getline(std::cin, date);
+void displayHistoryMenu(User& user, DailyProgress& progress) {
+    std::string filename = user.username;
+    std::vector<DailyProgress> progressData = loadDailyProgress(filename);
 
-                displayProgressForDate(progressData, user, date);
-            }
-            else if (choice == 2) { //Delete
-                std::cin.ignore();
-                std::string date;
-                std::cout << "Enter the date (YYYY-MM-DD) to delete progress: ";
-                std::getline(std::cin, date);
+    int choice;
+    while (true) {
+        choice = inputIntValidatedData("\nHISTORY MENU:\n1. View progress for a specific date\n"
+            "2. Delete progress for a specific date\n"
+            "3. Back\nChoose an option: ", 1, 3);
 
-                deleteProgressForDate(progressData, date, user.username);
-            }
-            else if (choice == 3) { //Back
-                break;
-            }
-            else {
-                std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
-            }
+        switch (choice) {
+        case 1: { // View
+            std::cin.ignore();
+            std::string date;
+            std::cout << "Enter the date (YYYY-MM-DD) to view progress: ";
+            std::getline(std::cin, date);
+
+            displayProgressForDate(progressData, user, date);
+            break;
         }
+        case 2: { // Delete
+            std::cin.ignore();
+            std::string date;
+            std::cout << "Enter the date (YYYY-MM-DD) to delete progress: ";
+            std::getline(std::cin, date);
+
+            deleteProgressForDate(progressData, progress, date, user.username);
+            break;
+        }
+        case 3: { // Back
+            return;
+        }
+        }
+    }
 }
+
+
 
 
 
@@ -97,24 +102,27 @@ void displayMenu2(User& user, DailyProgress& currentProgress) {
             "3. History\n4. My Account\n5. Logout\nChoose an option: ", 1, 5);
 
         switch (choice) {
-        case 1: //Progress for the day
+        case 1: {//Progress for the day
             displayDailyProgress(currentProgress, user);
             break;
-        case 2: //Edit current day data
+        }
+        case 2: {//Edit current day data
             editDailyProgress(currentProgress, user);
             break;
+        }
         case 3: {
-            displayHistoryMenu(user);
+            displayHistoryMenu(user, currentProgress);
             break;
         }
-        case 4: //My Account
+        case 4: { //My Account
             displayMyAccountMenu(user);
             break;
-        case 5: //Logout
+        }
+        case 5: { //Logout
+            exitProgram = true;
             displayMainMenu();
             break;
-        default:
-            std::cout << "Invalid choice. Please enter a number between 1 and 5.\n";
+        }
         }
     }
 }
@@ -128,7 +136,7 @@ void displayMainMenu()
 
     while (exitProgram)
     {
-        choice = inputIntValidatedData("MAIN MENU:\n1. Log In\n2. Sign In\n"
+        choice = inputIntValidatedData("\nMAIN MENU : \n1. Log In\n2. Sign In\n"
             "3. Quit\nChoose an option: ", 1, 3);
 
         switch (choice)
@@ -147,9 +155,6 @@ void displayMainMenu()
             exitProgram = false;
             exit(0);
             break;
-        }
-        default: {
-            std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
         }
         }
     }

@@ -47,8 +47,14 @@ void saveUsersToFile() {
     }
 
     outFile.close();
-    std::cout << "User data saved successfully.\n";
 }
+
+
+
+
+
+
+
 
 
 
@@ -83,12 +89,20 @@ void loadUsersFromFile() {
 
 
 
+
+
+
+
 void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std::string& username) {
     std::string filename = "progress_" + username + ".txt";
     std::ofstream outFile(filename, std::ios::trunc);
 
     if (!outFile) {
-        std::cerr << "Error: Unable to save daily progress data to file.\n";
+        std::cerr << "Error: Unable to open file for writing: " << filename << "\n";
+        return;
+    }
+
+    if (progressData.empty()) {
         return;
     }
 
@@ -117,52 +131,61 @@ void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std
     }
 
     outFile.close();
-    std::cout << "Daily progress data for " << username << " saved successfully.\n";
 }
+
+
+
+
+
+
+
 
 
 
 std::vector<DailyProgress> loadDailyProgress(const std::string& username) {
     std::string filename = "progress_" + username + ".txt";
     std::ifstream inFile(filename);
+
     if (!inFile) {
-        std::cerr << "No progress data file found for " << username << ". Starting fresh.\n";
         return {};
     }
 
     std::vector<DailyProgress> progressData;
-    DailyProgress progress;
 
-    while (std::getline(inFile, progress.date)) {
-        inFile >> progress.calorieBalance;
-        inFile >> progress.proteinIntake;
-        inFile >> progress.fatIntake;
-        inFile >> progress.carbsIntake;
-        inFile >> progress.waterCups;
+    while (true) {
+        DailyProgress progress;
+
+        if (!std::getline(inFile, progress.date)) break;
+        if (!(inFile >> progress.calorieBalance >> progress.proteinIntake
+            >> progress.fatIntake >> progress.carbsIntake >> progress.waterCups)) {
+            break;
+        }
+        inFile.ignore();
 
         int mealsCount;
-        inFile >> mealsCount;
+        if (!(inFile >> mealsCount)) break;
         inFile.ignore();
         progress.meals.clear();
+
         for (int i = 0; i < mealsCount; ++i) {
             Meal meal;
-            std::getline(inFile, meal.name);
-            inFile >> meal.calories;
-            inFile >> meal.protein;
-            inFile >> meal.fat;
-            inFile >> meal.carbs;
+            if (!std::getline(inFile, meal.name) || !(inFile >> meal.calories >> meal.protein >> meal.fat >> meal.carbs)) {
+                break;
+            }
             inFile.ignore();
             progress.meals.push_back(meal);
         }
 
         int workoutsCount;
-        inFile >> workoutsCount;
+        if (!(inFile >> workoutsCount)) break;
         inFile.ignore();
         progress.workouts.clear();
+
         for (int i = 0; i < workoutsCount; ++i) {
             Workout workout;
-            std::getline(inFile, workout.name);
-            inFile >> workout.caloriesBurned;
+            if (!std::getline(inFile, workout.name) || !(inFile >> workout.caloriesBurned)) {
+                break;
+            }
             inFile.ignore();
             progress.workouts.push_back(workout);
         }
@@ -171,6 +194,10 @@ std::vector<DailyProgress> loadDailyProgress(const std::string& username) {
     }
 
     inFile.close();
+
+    /*if (progressData.empty()) {
+        std::cerr << "Warning: No valid progress data found in " << filename << ".\n";
+    }*/
+
     return progressData;
 }
-

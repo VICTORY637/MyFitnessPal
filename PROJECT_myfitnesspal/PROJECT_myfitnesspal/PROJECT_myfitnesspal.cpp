@@ -28,6 +28,15 @@ int main() {
     loadUsersFromFile();
 
     std::cout << "WELCOME TO MY FITNESS PALL!\n\n";
+    std::cout << "           O  " << "\n";
+    std::cout << "          /|\\  " << "\n";
+    std::cout << "      --(  |  )--  " << "\n";
+    std::cout << "          / \\  " << "\n";
+    std::cout << "         /   \\  " << "\n";
+    std::cout << "  ===================";
+    std::cout << "\n";
+
+
     // Display the main menu
     displayMainMenu();
 

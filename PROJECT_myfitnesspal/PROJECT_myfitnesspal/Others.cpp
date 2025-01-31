@@ -20,6 +20,21 @@
 
 
 
+
+bool isValidFileName(const std::string& username) {
+    for (char c : username) {
+        if (!((c >= 'a' && c <= 'z') ||
+            (c >= 'A' && c <= 'Z') ||
+            (c >= '0' && c <= '9') ||
+            (c == '.') || (c == '_')))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 char toUpper(char& letter) {
     if (letter >= 'a' && letter <= 'z') letter = letter - ('a' - 'A');
     return letter;
@@ -33,7 +48,7 @@ int inputIntValidatedData(const std::string& prompt, int min, int max) {
         if (value >= min && value <= max) {
             return value;
         }
-        std::cout << "Invalid input. Please enter a value between " << min << " and " << max << ".\n";
+        std::cout << "Invalid input. Please enter a value between " << min << " and " << max << ".\n\n";
         std::cin.clear();
         std::cin.ignore(10000, '\n');
     }
@@ -49,7 +64,7 @@ double inputDoubleValidatedData(const std::string& prompt, double min, double ma
             return value;
         }
 
-        std::cout << "Invalid input. Please enter a value between " << min << " and " << max << ".\n";
+        std::cout << "Invalid input. Please enter a value between " << min << " and " << max << ".\n\n";
         std::cin.clear();
         std::cin.ignore(10000, '\n');
     }
@@ -70,7 +85,7 @@ char inputCharValidatedData(const std::string& prompt, const char* validChars, i
 
         std::cout << "Invalid input. Please enter one of the following: ";
         for (int i = 0; i < validCharCount; ++i) {
-            std::cout << validChars[i] << (i < validCharCount - 1 ? ", " : ".\n");
+            std::cout << validChars[i] << (i < validCharCount - 1 ? ", " : ".\n\n");
         }
         std::cin.clear();
         std::cin.ignore(10000, '\n');

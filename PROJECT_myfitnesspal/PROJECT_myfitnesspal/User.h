@@ -49,5 +49,6 @@ void signIn();
 void editUserInformation(User& user);
 void editPhisicalCharacteristics(User& user);
 void printUserInformation(const User& user);
+std::string getValidUsername(const std::vector<User>& userDatabase);
 
 #endif

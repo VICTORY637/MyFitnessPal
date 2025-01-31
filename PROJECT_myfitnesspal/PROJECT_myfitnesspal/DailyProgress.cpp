@@ -27,7 +27,8 @@
 
 
 void displayDailyProgress(const DailyProgress& progress, const User& user) {
-    std::cout << "\nDaily Progress for " << progress.date << ":\n";
+    std::cout << "\n+-------------------------------------------+\n";
+    std::cout << "\nDAILY PROGRESS FOR " << progress.date << ":\n\n";
 
     if (user.accountType == 'P') {
         std::cout << "Calorie balance: " << progress.calorieBalance << "/" << user.dailyCalories << " kcal\n";
@@ -54,6 +55,8 @@ void displayDailyProgress(const DailyProgress& progress, const User& user) {
     for (const auto& workout : progress.workouts) {
         std::cout << "- " << workout.name << " (Calories burned: " << workout.caloriesBurned << ")\n";
     }
+
+    std::cout << "\n+-------------------------------------------+\n";
 }
 
 
@@ -69,21 +72,27 @@ void displayProgressForDate(const std::vector<DailyProgress>& progressData, cons
 
 
 
-void deleteProgressForDate(std::vector<DailyProgress>& progressData, const std::string& date, const std::string& username) {
+
+void deleteProgressForDate(std::vector<DailyProgress>& progressData, DailyProgress& progress, const std::string& date, const std::string& username) {
     bool found = false;
 
-    for (auto i = progressData.begin(); i != progressData.end(); ) {
-        if ((*i).date == date) {
-            i = progressData.erase(i);
-            found = true;
-        }
-        else {
-            ++i;
-        }
+    auto it = std::remove_if(progressData.begin(), progressData.end(),
+        [&date](const DailyProgress& p) { return p.date == date; });
+
+    if (it != progressData.end()) {
+        progressData.erase(it, progressData.end());
+        found = true;
     }
 
     if (found) {
         std::cout << "Data for the selected date has been deleted.\n";
+
+        if (date == progress.date) {
+            std::cout << "Clearing current progress for today.\n";
+            progress = {};
+            progress.date = date;
+        }
+
         saveDailyProgress(progressData, username);
     }
     else {
@@ -94,64 +103,41 @@ void deleteProgressForDate(std::vector<DailyProgress>& progressData, const std::
 
 
 
+
+
 void editDailyProgress(DailyProgress& progress, const User& user) {
     int choice;
     bool done = false;
-    std::string filename = "progress_" + user.username + ".txt";
-    std::vector<DailyProgress> progressData = loadDailyProgress(filename);
+    std::string username = user.username;
+    std::vector<DailyProgress> progressData = loadDailyProgress(username);
 
     while (!done) {
         std::cout << "\nEdit Daily Progress for " << progress.date << ":\n";
         choice = inputIntValidatedData("1. Add meal\n2. Remove meal\n3. Add workout\n4. Remove workout\n"
-            "5. Add water\n6. Remove water\n7. Back\nChoose an option: ", 1, 7);
+            "5. Add water\n6. Remove water\n7. Save and back\nChoose an option: ", 1, 7);
 
         switch (choice) {
-        case 1: {
+        case 1:
             addMeal(user, progress);
             break;
-        }
-        case 2: {
+        case 2:
             removeMeal(progress, user);
             break;
-        }
-        case 3: {
+        case 3:
             addWorkout(progress);
             break;
-        }
-        case 4: {
+        case 4:
             removeWorkout(progress);
             break;
-        }
-        case 5: {
-            progress.waterCups += inputIntValidatedData("Enter number of water cups to add: ", 1, 30);
+        case 5:
+            progress.waterCups += inputIntValidatedData("Enter number of water cups to add: ", 1, 20);
             break;
-        }
-        case 6: {
-            if (progress.waterCups = 1) {
-                std::cout << "There is only one cup added.\n";
-                int choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
-
-                if (choice == 1) {
-                    progress.waterCups = 0;
-                    std::cout << "Cups removed successfully.\n";
-                }
-                else {
-                    std::cout << "No cups were removed.\n";
-                }
-                break;
-            }
-            else if (progress.waterCups > 1) {
-                progress.waterCups -= inputIntValidatedData("Enter number of water cups to remove: ", 1, progress.waterCups);
-                break;
-            }
-            std::cout << "You already have 0 cups.\n";
+        case 6:
+            removeWater(progress);
             break;
-        }
         case 7:
             done = true;
-            break;
-        default:
-            std::cout << "Invalid input. Please enter a number between 1 and 7.\n";
+            continue;
         }
     }
 
@@ -177,6 +163,7 @@ void editDailyProgress(DailyProgress& progress, const User& user) {
 
 
 
+// ADD AND REMOVE FUNCTIONS:
 
 void addMeal(const User& user, DailyProgress& progress) {
     Meal meal;
@@ -185,20 +172,22 @@ void addMeal(const User& user, DailyProgress& progress) {
     std::getline(std::cin, meal.name);
 
     if (user.accountType == 'S') {
-        progress.calorieBalance += inputIntValidatedData("Enter calories for the meal: ", 0, 10000);
+        meal.calories = inputIntValidatedData("Enter calories for the meal: ", 0, 10000);
+        progress.calorieBalance += meal.calories;
     }
     else if (user.accountType == 'P') {
         int choice = inputIntValidatedData("Do you want to:\n1. Add calories directly\n"
             "2. Add detailed macros (protein, fat, carbs)\nChoose an option: ", 1, 2);
 
         if (choice == 1) {
-            progress.calorieBalance += inputIntValidatedData("Enter calories for the meal: ", 0, 10000);
+            meal.calories = inputIntValidatedData("Enter calories for the meal: ", 0, 10000);
+            progress.calorieBalance += meal.calories;
         }
         else if (choice == 2) {
             meal.protein = inputIntValidatedData("Enter protein (grams): ", 0, 1000);
             meal.fat = inputIntValidatedData("Enter fat (grams): ", 0, 1000);
             meal.carbs = inputIntValidatedData("Enter carbs (grams): ", 0, 1000);
-            
+
             const int kklPerGramProtein = 4;
             const int kklPerGramFat = 9;
             const int kklPerGramCarbs = 4;
@@ -221,14 +210,17 @@ void addMeal(const User& user, DailyProgress& progress) {
 
 
 
+
+
+
 void removeMeal(DailyProgress& progress, const User& user) {
     if (progress.meals.empty()) {
-        std::cout << "No meals to remove.\n";
+        std::cout << "\nNo meals to remove.\n";
         return;
     }
 
     else if (progress.meals.size() == 1) {
-        std::cout << "There is only one meal in the list: " << progress.meals[0].name << ".\n";
+        std::cout << "\nThere is only one meal in the list: " << progress.meals[0].name << ".\n";
         int choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
 
         if (choice == 1) {
@@ -280,12 +272,12 @@ void addWorkout(DailyProgress& progress) {
 
 void removeWorkout(DailyProgress& progress) {
     if (progress.workouts.empty()) {
-        std::cout << "No workouts to remove.\n";
+        std::cout << "\nNo workouts to remove.\n";
         return;
     }
 
     if (progress.workouts.size() == 1) {
-        std::cout << "There is only one workout in the list: " << progress.workouts[0].name << ".\n";
+        std::cout << "\nThere is only one workout in the list: " << progress.workouts[0].name << ".\n";
         int choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
 
         if (choice == 1) {
@@ -313,3 +305,34 @@ void removeWorkout(DailyProgress& progress) {
     std::cout << "Workout removed successfully.\n";
 }
 
+
+
+
+void removeWater(DailyProgress& progress) {
+    int choice;
+
+    switch (progress.waterCups) {
+    case 0:
+        std::cout << "\nYou already have 0 cups.\n";
+        break;
+
+    case 1:
+        std::cout << "\nThere is only one cup added.\n";
+        choice = inputIntValidatedData("Do you want to remove it? (1. Yes, 2. No): ", 1, 2);
+
+        if (choice == 1) {
+            progress.waterCups = 0;
+            std::cout << "Cups removed successfully.\n";
+        }
+        else {
+            std::cout << "No cups were removed.\n";
+        }
+        break;
+
+    default:
+        int cupsToRemove = inputIntValidatedData("Enter number of water cups to remove: ", 1, progress.waterCups);
+        progress.waterCups -= cupsToRemove;
+        std::cout << "Cups removed successfully.\n";
+        break;
+    }
+}

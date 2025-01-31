@@ -46,7 +46,7 @@ struct DailyProgress {
 };
 
 void displayProgressForDate(const std::vector<DailyProgress>& progressData, const User& user, const std::string& date);
-void deleteProgressForDate(std::vector<DailyProgress>& progressData, const std::string& date, const std::string& username);
+void deleteProgressForDate(std::vector<DailyProgress>& progressData, DailyProgress& progress, const std::string& date, const std::string& username);
 
 void displayDailyProgress(const DailyProgress& progress, const User& user);
 void editDailyProgress(DailyProgress& progress, const User& user);
@@ -55,5 +55,6 @@ void addMeal(const User& user, DailyProgress& progress);
 void removeMeal(DailyProgress& progress, const User& user);
 void addWorkout(DailyProgress& progress);
 void removeWorkout(DailyProgress& progress);
+void removeWater(DailyProgress& progress);
 
 #endif

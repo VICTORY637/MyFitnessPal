@@ -41,13 +41,14 @@ void logIn() {
     for (User& user : userDatabase) {
         if (user.username == username && user.password == password) {
             currentUser = &user;
+            std::cout << ".....................";
             std::cout << "\n\nWelcome, " << username << "!\n";
             displayMotivationalQuote();
             return;
         }
     }
 
-    std::cout << "Invalid username or password.\n";
+    std::cout << "Invalid username or password.\n\n";
 }
 
 
@@ -62,11 +63,11 @@ void displayMotivationalQuote() {
         "Believe in yourself and all that you are.",
         "The secret of getting ahead is getting started.",
         "Every journey begins with a single step.",
-        "You don’t have to be great to start, but you have to start to be great.",
+        "You do not have to be great to start, but you have to start to be great.",
         "Push yourself, because no one else is going to do it for you.",
         "Success is not the key to happiness. Happiness is the key to success.",
         "Hardships often prepare ordinary people for an extraordinary destiny.",
-        "Don’t watch the clock; do what it does. Keep going.",
+        "Do not watch the clock; do what it does. Keep going.",
         "Action is the foundational key to all success.",
         "You are never too old to set another goal or to dream a new dream.",
         "Do not limit your challenges. Challenge your limits.",
@@ -89,23 +90,8 @@ void displayMotivationalQuote() {
 //sign in
 void signIn() {
     User newUser;
-    std::cout << "Enter username: ";
-    std::cin >> newUser.username;
 
-    bool uniqueUsername = false;
-
-    while (!uniqueUsername) {
-        uniqueUsername = true;
-        for (const auto& user : userDatabase) {
-            if (user.username == newUser.username) {
-                std::cout << "Username already exists. Please try a different one. Enter username: ";
-                std::cin >> newUser.username;
-                uniqueUsername = false;
-                break;
-            }
-        }
-    }
-
+    newUser.username = getValidUsername(userDatabase);
 
     std::cout << "Enter password: ";
     std::cin >> newUser.password;
@@ -143,6 +129,42 @@ void signIn() {
 }
 
 
+
+
+
+
+
+std::string getValidUsername(const std::vector<User>& userDatabase) {
+    std::string username;
+
+    std::cout << "Enter username /only letters, numbers, dot (.) and underscore (_)/: ";
+    std::cin.ignore();
+    std::getline(std::cin, username);
+
+    while (true) {
+        if (!isValidFileName(username)) {
+            std::cerr << "Invalid username! Use only letters, numbers, dot (.) and underscore (_).\n";
+            std::cout << "Enter username: ";
+            std::getline(std::cin, username);
+            continue;
+        }
+
+        bool uniqueUsername = true;
+        for (const auto& user : userDatabase) {
+            if (user.username == username) {
+                std::cout << "Username already exists. Please try a different one.\n";
+                std::cout << "Enter username: ";
+                std::getline(std::cin, username);
+                uniqueUsername = false;
+                break;
+            }
+        }
+
+        if (uniqueUsername) break;
+    }
+
+    return username;
+}
 
 
 
