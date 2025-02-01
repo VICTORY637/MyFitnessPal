@@ -27,7 +27,7 @@ int main() {
     // Load existing users from file
     loadUsersFromFile();
 
-    std::cout << "WELCOME TO MY FITNESS PALL!\n\n";
+    std::cout << "WELCOME  TO  MYFITNESSPAL!\n\n";
     std::cout << "           O  " << "\n";
     std::cout << "          /|\\  " << "\n";
     std::cout << "      --(  |  )--  " << "\n";

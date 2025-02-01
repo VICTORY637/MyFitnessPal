@@ -35,10 +35,18 @@ bool isValidFileName(const std::string& username) {
 }
 
 
+
+double bigger(double a, double b) {
+    return (a > b) ? a : b;
+}
+
+
+
 char toUpper(char& letter) {
     if (letter >= 'a' && letter <= 'z') letter = letter - ('a' - 'A');
     return letter;
 }
+
 
 int inputIntValidatedData(const std::string& prompt, int min, int max) {
     int value;
@@ -53,6 +61,7 @@ int inputIntValidatedData(const std::string& prompt, int min, int max) {
         std::cin.ignore(10000, '\n');
     }
 }
+
 
 double inputDoubleValidatedData(const std::string& prompt, double min, double max) {
     double value;
@@ -69,6 +78,7 @@ double inputDoubleValidatedData(const std::string& prompt, double min, double ma
         std::cin.ignore(10000, '\n');
     }
 }
+
 
 char inputCharValidatedData(const std::string& prompt, const char* validChars, int validCharCount) {
     char value;
@@ -93,6 +103,7 @@ char inputCharValidatedData(const std::string& prompt, const char* validChars, i
 }
 
 
+
 std::string getCurrentDate() {
     std::time_t t = std::time(nullptr);
     std::tm now; 
@@ -101,6 +112,7 @@ std::string getCurrentDate() {
         (now.tm_mon < 9 ? "0" : "") + std::to_string(1 + now.tm_mon) + "-" +
         (now.tm_mday < 10 ? "0" : "") + std::to_string(now.tm_mday);
 }
+
 
 
 double round2(double value) {

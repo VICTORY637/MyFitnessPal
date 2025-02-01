@@ -30,17 +30,24 @@ void displayDailyProgress(const DailyProgress& progress, const User& user) {
     std::cout << "\n+-------------------------------------------+\n";
     std::cout << "\nDAILY PROGRESS FOR " << progress.date << ":\n\n";
 
+    double remainingCalories = bigger(0.0, user.dailyCalories - progress.calorieBalance);
+    std::cout << "Calorie balance: " << progress.calorieBalance << "/" << user.dailyCalories
+        << " kcal (" << remainingCalories << " remaining)\n";
+
     if (user.accountType == 'P') {
-        std::cout << "Calorie balance: " << progress.calorieBalance << "/" << user.dailyCalories << " kcal\n";
-        std::cout << "Protein intake: " << progress.proteinIntake << "/" << user.protein << " g\n";
-        std::cout << "Fat intake: " << progress.fatIntake << "/" << user.fat << " g\n";
-        std::cout << "Carbs intake: " << progress.carbsIntake << "/" << user.carbs << " g\n";
-    }
-    else {
-        std::cout << "Calorie balance: " << progress.calorieBalance << "/" << user.dailyCalories << " kcal\n";
+        double remainingProtein = bigger(0.0, user.protein - progress.proteinIntake);
+        double remainingFat = bigger(0.0, user.fat - progress.fatIntake);
+        double remainingCarbs = bigger(0.0, user.carbs - progress.carbsIntake);
+
+        std::cout << "Protein intake: " << progress.proteinIntake << "/" << user.protein
+            << " g (" << remainingProtein << " remaining)\n";
+        std::cout << "Fat intake: " << progress.fatIntake << "/" << user.fat
+            << " g (" << remainingFat << " remaining)\n";
+        std::cout << "Carbs intake: " << progress.carbsIntake << "/" << user.carbs
+            << " g (" << remainingCarbs << " remaining)\n";
     }
 
-    std::cout << "Water cups: " << progress.waterCups << " ";
+    std::cout << "\nWater cups: " << progress.waterCups << " ";
     for (int i = 0; i < progress.waterCups; ++i) {
         std::cout << "\\_/ ";
     }
@@ -58,6 +65,10 @@ void displayDailyProgress(const DailyProgress& progress, const User& user) {
 
     std::cout << "\n+-------------------------------------------+\n";
 }
+
+
+
+
 
 
 void displayProgressForDate(const std::vector<DailyProgress>& progressData, const User& user, const std::string& date) {
@@ -172,7 +183,7 @@ void addMeal(const User& user, DailyProgress& progress) {
     std::getline(std::cin, meal.name);
 
     if (user.accountType == 'S') {
-        meal.calories = inputIntValidatedData("Enter calories for the meal: ", 0, 10000);
+        meal.calories = inputDoubleValidatedData("Enter calories for the meal: ", 0, 10000);
         progress.calorieBalance += meal.calories;
     }
     else if (user.accountType == 'P') {
@@ -180,13 +191,13 @@ void addMeal(const User& user, DailyProgress& progress) {
             "2. Add detailed macros (protein, fat, carbs)\nChoose an option: ", 1, 2);
 
         if (choice == 1) {
-            meal.calories = inputIntValidatedData("Enter calories for the meal: ", 0, 10000);
+            meal.calories = inputDoubleValidatedData("Enter calories for the meal: ", 0, 10000);
             progress.calorieBalance += meal.calories;
         }
         else if (choice == 2) {
-            meal.protein = inputIntValidatedData("Enter protein (grams): ", 0, 1000);
-            meal.fat = inputIntValidatedData("Enter fat (grams): ", 0, 1000);
-            meal.carbs = inputIntValidatedData("Enter carbs (grams): ", 0, 1000);
+            meal.protein = inputDoubleValidatedData("Enter protein (grams): ", 0, 1000);
+            meal.fat = inputDoubleValidatedData("Enter fat (grams): ", 0, 1000);
+            meal.carbs = inputDoubleValidatedData("Enter carbs (grams): ", 0, 1000);
 
             const int kklPerGramProtein = 4;
             const int kklPerGramFat = 9;
@@ -264,7 +275,7 @@ void addWorkout(DailyProgress& progress) {
     std::cout << "Enter workout name: ";
     std::cin.ignore();
     std::getline(std::cin, workout.name);
-    workout.caloriesBurned = inputIntValidatedData("Enter calories burned: ", 0, 10000);
+    workout.caloriesBurned = inputDoubleValidatedData("Enter calories burned: ", 0, 10000);
     progress.calorieBalance -= workout.caloriesBurned;
     progress.workouts.push_back(workout);
     std::cout << "Workout added successfully.\n";
