@@ -132,20 +132,17 @@ void signIn() {
 
 
 
-
-
 std::string getValidUsername(const std::vector<User>& userDatabase) {
     std::string username;
 
-    std::cout << "Enter username /only letters, numbers, dot (.) and underscore (_)/: ";
-    std::cin.ignore();
-    std::getline(std::cin, username);
-
     while (true) {
+        std::cout << "Enter username /only letters, numbers, dot (.) and underscore (_)/: ";
+        std::cin >> username;
+
         if (!isValidFileName(username)) {
             std::cerr << "Invalid username! Use only letters, numbers, dot (.) and underscore (_).\n";
-            std::cout << "Enter username: ";
-            std::getline(std::cin, username);
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
             continue;
         }
 
@@ -153,8 +150,6 @@ std::string getValidUsername(const std::vector<User>& userDatabase) {
         for (const auto& user : userDatabase) {
             if (user.username == username) {
                 std::cout << "Username already exists. Please try a different one.\n";
-                std::cout << "Enter username: ";
-                std::getline(std::cin, username);
                 uniqueUsername = false;
                 break;
             }
@@ -165,6 +160,7 @@ std::string getValidUsername(const std::vector<User>& userDatabase) {
 
     return username;
 }
+
 
 
 
