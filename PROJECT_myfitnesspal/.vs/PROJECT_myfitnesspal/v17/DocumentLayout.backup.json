@@ -66,21 +66,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Others.h",
-              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Others.h",
-              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Others.h",
-              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Others.h",
-              "RelativeToolTip": "PROJECT_myfitnesspal\\Others.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-16T19:59:50.206Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 8,
@@ -103,8 +90,7 @@
               "RelativeToolTip": "PROJECT_myfitnesspal\\Calculations.cpp",
               "ViewState": "AgIAAAQAAAAAAAAS8S0owEAAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-14T20:56:57.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-14T20:56:57.824Z"
             },
             {
               "$type": "Document",
@@ -128,8 +114,7 @@
               "RelativeToolTip": "PROJECT_myfitnesspal\\Others.cpp",
               "ViewState": "AgIAABEAAACA2J3dbWsQwE8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-16T19:59:24.027Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-16T19:59:24.027Z"
             },
             {
               "$type": "Document",
@@ -145,18 +130,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Calculations.h",
-              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h",
-              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Calculations.h",
-              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h",
-              "RelativeToolTip": "PROJECT_myfitnesspal\\Calculations.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-14T20:56:39.247Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "User.cpp",
               "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\User.cpp",
@@ -167,6 +140,30 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-14T17:26:34.861Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Others.h",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Others.h",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Others.h",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Others.h",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\Others.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-16T19:59:50.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Calculations.h",
+              "DocumentMoniker": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h",
+              "RelativeDocumentMoniker": "PROJECT_myfitnesspal\\Calculations.h",
+              "ToolTip": "C:\\Users\\vikto\\OneDrive\\Desktop\\MyFitnessPal\\PROJECT_myfitnesspal\\PROJECT_myfitnesspal\\Calculations.h",
+              "RelativeToolTip": "PROJECT_myfitnesspal\\Calculations.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-14T20:56:39.247Z"
             },
             {
               "$type": "Document",

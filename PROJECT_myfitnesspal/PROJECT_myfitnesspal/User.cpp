@@ -172,7 +172,7 @@ void editPhisicalCharacteristics(User& user) {
     bool done = false;
 
     while (!done) {
-        choice = inputIntValidatedData("\nEdit Physical Characteristics:\n1. Edit Age\n2. Gender\n3. Edit height\n4. Edit Weight\n5. Edit activity index\n6. Edit goal\n7. Back\nChoose an option: ", 1, 7);
+        choice = inputIntValidatedData("\nEdit Physical Characteristics:\n1. Edit Age\n2. Gender\n3. Edit height\n4. Edit Weight\n5. Edit activity index\n6. Edit goal\n7. Save and back\nChoose an option: ", 1, 7);
 
         switch (choice) {
         case 1: {
