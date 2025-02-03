@@ -44,7 +44,9 @@ int main() {
         // Load or initialize daily progress for the current user
         std::string currentDate = getCurrentDate();
         DailyProgress currentProgress;
-        std::vector<DailyProgress> userProgress = loadDailyProgress(currentUser->username);
+        User & user = *currentUser;
+        std::vector<DailyProgress> userProgress = loadDailyProgress(user.username);
+
 
         // Check if there's progress for today
         bool progressFound = false;
@@ -78,7 +80,7 @@ int main() {
         }
 
 
-        saveDailyProgress(userProgress, (*currentUser).username);
+        saveDailyProgress(userProgress, user.username);
 
         // Reset user pointer to allow re-login or exit
         currentUser = nullptr;
