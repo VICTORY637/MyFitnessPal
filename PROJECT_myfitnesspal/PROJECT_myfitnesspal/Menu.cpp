@@ -42,8 +42,6 @@ void displayMyAccountMenu(User& user) {
         case 3:
             back = false;
             break;
-        default:
-            std::cout << "Invalid choice. Please enter a number between 1 and 3.\n";
         }
     }
 }
@@ -53,7 +51,7 @@ void displayMyAccountMenu(User& user) {
 
 void displayHistoryMenu(User& user, DailyProgress& progress) {
     std::string filename = user.username;
-    std::vector<DailyProgress> progressData = loadDailyProgress(filename);
+    std::vector<DailyProgress> progressData = loadDailyProgress(filename); //will contain all previous records of daily progress
 
     int choice;
     while (true) {
@@ -129,33 +127,25 @@ void displayMenu2(User& user, DailyProgress& currentProgress) {
 
 
 
-void displayMainMenu()
-{
-    int choice;
-    bool exitProgram = true;
 
-    while (exitProgram)
-    {
+bool displayMainMenu() {
+    int choice;
+
+    while (true) {
         choice = inputIntValidatedData("\nMAIN MENU : \n1. Log In\n2. Sign In\n"
             "3. Quit\nChoose an option: ", 1, 3);
 
-        switch (choice)
-        {
-        case 1: {
+        switch (choice) {
+        case 1:
             logIn();
-            if (currentUser) return;
+            if (currentUser) return true;
             break;
-        }
-        case 2: {
+        case 2:
             signIn();
             break;
-        }
-        case 3: {
+        case 3:
             std::cout << "\nGoodbye! Have a productive day!\n";
-            exitProgram = false;
             exit(0);
-            break;
-        }
         }
     }
 }

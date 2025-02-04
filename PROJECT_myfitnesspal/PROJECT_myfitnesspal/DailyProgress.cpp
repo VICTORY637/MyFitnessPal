@@ -86,30 +86,32 @@ void displayProgressForDate(const std::vector<DailyProgress>& progressData, cons
 
 void deleteProgressForDate(std::vector<DailyProgress>& progressData, DailyProgress& progress, const std::string& date, const std::string& username) {
     bool found = false;
+    size_t i = 0;
 
-    auto it = std::remove_if(progressData.begin(), progressData.end(),
-        [&date](const DailyProgress& p) { return p.date == date; });
-
-    if (it != progressData.end()) {
-        progressData.erase(it, progressData.end());
-        found = true;
+    while (i < progressData.size()) {
+        if (progressData[i].date == date) {
+            progressData.erase(progressData.begin() + i); //progressData.begin() is not a simple pointer, but an iterator; erase() expects an iterator
+            found = true;
+        }
+        else {
+            ++i;
+        }
     }
 
     if (found) {
         std::cout << "Data for the selected date has been deleted.\n";
-
         if (date == progress.date) {
             std::cout << "Clearing current progress for today.\n";
             progress = {};
             progress.date = date;
         }
-
         saveDailyProgress(progressData, username);
     }
     else {
         std::cout << "No data found for the selected date.\n";
     }
 }
+
 
 
 
@@ -152,19 +154,7 @@ void editDailyProgress(DailyProgress& progress, const User& user) {
         }
     }
 
-    bool updated = false;
-    for (auto& day : progressData) {
-        if (day.date == progress.date) {
-            day = progress;
-            updated = true;
-            break;
-        }
-    }
-
-    if (!updated) {
-        progressData.push_back(progress);
-    }
-
+    progressData.push_back(progress);
     saveDailyProgress(progressData, user.username);
 }
 

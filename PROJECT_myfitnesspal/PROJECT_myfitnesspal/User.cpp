@@ -38,7 +38,7 @@ void logIn() {
     std::cout << "Enter password: ";
     std::cin >> password;
 
-    for (User& user : userDatabase) {
+    for (User& user : userDatabase) { //for-each (range-based for loop)
         if (user.username == username && user.password == password) {
             currentUser = &user;
             std::cout << ".....................";
@@ -59,7 +59,7 @@ void logIn() {
 //quotes
 void displayMotivationalQuote() {
     const int QUOTE_COUNT = 15;
-    const char* quotes[QUOTE_COUNT] = {
+    const char* quotes[QUOTE_COUNT] = { //array of POINTERS to strings; each element of it is a pointer to string
         "Believe in yourself and all that you are.",
         "The secret of getting ahead is getting started.",
         "Every journey begins with a single step.",
@@ -77,7 +77,9 @@ void displayMotivationalQuote() {
         "What we achieve inwardly will change outer reality."
     };
 
-    int randomIndex = std::time(nullptr) % QUOTE_COUNT;
+    int randomIndex = std::time(nullptr) % QUOTE_COUNT; //sumulating random effect
+                                                        //std::time(nullptr) - Returns the current time in seconds since January 1, 1970 (Epoch time)
+                                                        //Ensures that the index is always in the range[0, QUOTE_COUNT - 1] (because the remainder is in this interval)
 
     std::cout << "\nMotivational Quote of the day: " << quotes[randomIndex] << "\n\n";
 }
@@ -140,7 +142,7 @@ std::string getValidUsername(const std::vector<User>& userDatabase) {
         std::cin >> username;
 
         if (!isValidFileName(username)) {
-            std::cerr << "Invalid username! Use only letters, numbers, dot (.) and underscore (_).\n";
+            std::cout << "Invalid username! Use only letters, numbers, dot (.) and underscore (_).\n";
             std::cin.clear();
             std::cin.ignore(10000, '\n');
             continue;
@@ -236,29 +238,16 @@ void editUserInformation(User& user) {
         case 1: {
             std::cout << "Warning: Changing your username will delete your progress up to today.\n";
             int confirmation = inputIntValidatedData("Are you sure you want to continue ?\n1. yes\n2. no\n", 1, 2);
+
             if (confirmation == 1) {
-                std::string newUsername;
-                std::cout << "Enter new username: ";
-                std::cin >> newUsername;
+                std::string newUsername = getValidUsername(userDatabase);
 
-                bool usernameExists = false;
-                for (const User& existingUser : userDatabase) {
-                    if (existingUser.username == newUsername) {
-                        usernameExists = true;
-                        break;
-                    }
-                }
-
-                if (usernameExists) {
-                    std::cout << "Username already exists. Please try a different one.\n";
-                }
-                else {
-                    user.username = newUsername;
-                    std::cout << "Username updated successfully.\n";
-                }
+                user.username = newUsername;
+                std::cout << "Username updated successfully.\n";
             }
-            else break;
+            break;
         }
+
         case 2: {
             std::string currentPassword, newPassword;
 
@@ -277,11 +266,13 @@ void editUserInformation(User& user) {
             std::cout << "Password updated successfully.\n";
             break;
         }
+
         case 3: {
             const char validAccountTypes[] = { 'S', 'P' };
             user.accountType = inputCharValidatedData("Enter new account type (S for Standard, P for Premium): ", validAccountTypes, 2);
             break;
         }
+
         case 4: {
             done = true;
             break;
@@ -289,6 +280,7 @@ void editUserInformation(User& user) {
         }
     }
     saveUsersToFile();
+
 }
 
 

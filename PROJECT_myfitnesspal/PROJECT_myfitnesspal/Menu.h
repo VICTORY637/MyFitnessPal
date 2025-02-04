@@ -19,7 +19,7 @@
 #include "User.h"
 #include "DailyProgress.h"
 
-void displayMainMenu();
+bool displayMainMenu();
 void displayMenu2(User& user, DailyProgress& currentProgress);
 void displayHistoryMenu(User& user, DailyProgress& progress);
 

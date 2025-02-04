@@ -36,54 +36,57 @@ int main() {
     std::cout << "  ===================";
     std::cout << "\n";
 
+    bool programRunning = true;
 
-    // Display the main menu
-    displayMainMenu();
+    while (programRunning) {
+        programRunning = displayMainMenu();
 
-    if (currentUser) {
-        // Load or initialize daily progress for the current user
-        std::string currentDate = getCurrentDate();
-        DailyProgress currentProgress;
-        User & user = *currentUser;
-        std::vector<DailyProgress> userProgress = loadDailyProgress(user.username);
-
-
-        // Check if there's progress for today
-        bool progressFound = false;
-        for (auto& progress : userProgress) {
-            if (progress.date == currentDate) {
-                currentProgress = progress;
-                progressFound = true;
-                break;
-            }
+        if (!programRunning) {
+            break;
         }
 
-        if (!progressFound) {
-            // Initialize new progress for the day
-            currentProgress.date = currentDate;
-        }
+        if (currentUser) {
+            std::string currentDate = getCurrentDate();
+            DailyProgress currentProgress;
+            User& user = *currentUser;
+            std::vector<DailyProgress> userProgress = loadDailyProgress(user.username);
 
-        // Show the user's menu2
-        displayMenu2(*currentUser, currentProgress);
-
-        // Save the updated progress to file
-        if (progressFound) {
+            // Check if there's progress for today
+            bool progressFound = false;
             for (auto& progress : userProgress) {
                 if (progress.date == currentDate) {
-                    progress = currentProgress;
+                    currentProgress = progress;
+                    progressFound = true;
                     break;
                 }
             }
+
+            if (!progressFound) {
+                // Initialize new progress for the day
+                currentProgress.date = currentDate;
+            }
+
+            // Show the user's menu2
+            displayMenu2(*currentUser, currentProgress);
+
+            // Save the updated progress to file
+            if (progressFound) {
+                for (auto& progress : userProgress) {
+                    if (progress.date == currentDate) {
+                        progress = currentProgress;
+                        break;
+                    }
+                }
+            }
+            else {
+                userProgress.push_back(currentProgress);
+            }
+
+            saveDailyProgress(userProgress, user.username);
+
+            // Reset user pointer to allow re-login or exit
+            currentUser = nullptr;
         }
-        else {
-            userProgress.push_back(currentProgress);
-        }
-
-
-        saveDailyProgress(userProgress, user.username);
-
-        // Reset user pointer to allow re-login or exit
-        currentUser = nullptr;
     }
 
     // Save users to file before exiting
@@ -91,3 +94,4 @@ int main() {
 
     return 0;
 }
+

@@ -24,8 +24,9 @@
 const std::string userDatabaseFile = "users.txt"; //global string varr for the file with users (outfile)
 
 void saveUsersToFile() {
-    std::ofstream outFile(userDatabaseFile); //creating an outFile object of class std::ofstream to write the users data
-    if (!outFile) {
+    std::ofstream outFile(userDatabaseFile); //create and open an outFile object of class std::ofstream to write the users data
+    // file exists -> it will be cleaned; not -> will be created
+    if (!outFile) { //check if the file is opened
         std::cout << "Error: Unable to save user data to file.\n";
         return;
     }
@@ -46,7 +47,7 @@ void saveUsersToFile() {
             << user.carbs << "\n";
     }
 
-    outFile.close();
+    outFile.close(); //cloze the file
 }
 
 
@@ -98,7 +99,7 @@ void saveDailyProgress(const std::vector<DailyProgress>& progressData, const std
     std::ofstream outFile(filename, std::ios::trunc);
 
     if (!outFile) {
-        std::cerr << "Error: Unable to open file for writing: " << filename << "\n";
+        std::cout << "Error: Unable to open file for writing: " << filename << "\n";
         return;
     }
 
@@ -155,7 +156,7 @@ std::vector<DailyProgress> loadDailyProgress(const std::string& username) {
     while (true) {
         DailyProgress progress;
 
-        if (!std::getline(inFile, progress.date)) break;
+        if (!std::getline(inFile, progress.date)) break; // read fails if (the file is empty or the format is wrong)
         if (!(inFile >> progress.calorieBalance >> progress.proteinIntake
             >> progress.fatIntake >> progress.carbsIntake >> progress.waterCups)) {
             break;
@@ -196,7 +197,7 @@ std::vector<DailyProgress> loadDailyProgress(const std::string& username) {
     inFile.close();
 
     /*if (progressData.empty()) {
-        std::cerr << "Warning: No valid progress data found in " << filename << ".\n";
+        std::cout << "Warning: No valid progress data found in " << filename << ".\n";
     }*/
 
     return progressData;
